@@ -1,0 +1,27 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="60" y="70" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="30" font-weight="700" fill="#0f172a">벡터 내적과 크기</text>
+  <text x="60" y="110" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#475569">예시: b = [1, 3], c = [4, 2], vector_a = [1, 2, 3]</text>
+
+  <rect x="60" y="160" width="500" height="480" rx="24" fill="#ffffff" stroke="#dbe3f0"/>
+  <text x="95" y="220" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="24" font-weight="700" fill="#0f172a">1. 벡터 내적</text>
+  <text x="95" y="285" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">b · c = [1, 3] · [4, 2]</text>
+  <text x="95" y="345" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">= 1×4 + 3×2</text>
+  <text x="95" y="405" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">= 4 + 6</text>
+  <text x="95" y="465" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="34" font-weight="700" fill="#dc2626">= 10</text>
+
+  <rect x="95" y="515" width="430" height="90" rx="18" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="120" y="555" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">내적은 같은 위치 원소를 곱한 뒤</text>
+  <text x="120" y="585" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">모두 더한 값입니다.</text>
+
+  <rect x="640" y="160" width="500" height="480" rx="24" fill="#ffffff" stroke="#dbe3f0"/>
+  <text x="675" y="220" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="24" font-weight="700" fill="#0f172a">2. 벡터의 크기 (norm)</text>
+  <text x="675" y="285" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">||vector_a|| = ||[1, 2, 3]||</text>
+  <text x="675" y="345" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">= √(1² + 2² + 3²)</text>
+  <text x="675" y="405" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" fill="#1e293b">= √14</text>
+  <text x="675" y="465" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="34" font-weight="700" fill="#7c3aed">≈ 3.741657</text>
+
+  <rect x="675" y="515" width="430" height="90" rx="18" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="700" y="555" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">`np.linalg.norm()`은 벡터의 길이,</text>
+  <text x="700" y="585" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">즉 크기를 구할 때 사용합니다.</text>
+</svg>

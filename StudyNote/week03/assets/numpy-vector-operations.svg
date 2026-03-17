@@ -1,0 +1,75 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <text x="60" y="70" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="30" font-weight="700" fill="#0f172a">벡터 덧셈과 스칼라 곱</text>
+  <text x="60" y="110" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#475569">예시 벡터: b = [1, 3], c = [4, 2], b + c = [5, 5]</text>
+
+  <rect x="50" y="150" width="700" height="500" rx="24" fill="#ffffff" stroke="#dbe3f0"/>
+  <line x1="120" y1="590" x2="680" y2="590" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="120" y1="590" x2="120" y2="200" stroke="#94a3b8" stroke-width="3"/>
+
+  <g stroke="#cbd5e1" stroke-width="1">
+    <line x1="220" y1="590" x2="220" y2="230"/>
+    <line x1="320" y1="590" x2="320" y2="230"/>
+    <line x1="420" y1="590" x2="420" y2="230"/>
+    <line x1="520" y1="590" x2="520" y2="230"/>
+    <line x1="620" y1="590" x2="620" y2="230"/>
+    <line x1="120" y1="510" x2="650" y2="510"/>
+    <line x1="120" y1="430" x2="650" y2="430"/>
+    <line x1="120" y1="350" x2="650" y2="350"/>
+    <line x1="120" y1="270" x2="650" y2="270"/>
+  </g>
+
+  <g font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="16" fill="#64748b">
+    <text x="115" y="615">0</text>
+    <text x="215" y="615">1</text>
+    <text x="315" y="615">2</text>
+    <text x="415" y="615">3</text>
+    <text x="515" y="615">4</text>
+    <text x="615" y="615">5</text>
+    <text x="92" y="595">0</text>
+    <text x="92" y="515">1</text>
+    <text x="92" y="435">2</text>
+    <text x="92" y="355">3</text>
+    <text x="92" y="275">4</text>
+  </g>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ea580c"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <line x1="120" y1="590" x2="220" y2="350" stroke="#2563eb" stroke-width="6" marker-end="url(#arrowBlue)"/>
+  <line x1="120" y1="590" x2="520" y2="430" stroke="#16a34a" stroke-width="6" marker-end="url(#arrowGreen)"/>
+  <line x1="120" y1="590" x2="620" y2="190" stroke="#ea580c" stroke-width="6" marker-end="url(#arrowOrange)"/>
+  <line x1="120" y1="590" x2="420" y2="110" stroke="#7c3aed" stroke-width="6" marker-end="url(#arrowPurple)"/>
+
+  <text x="235" y="340" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" font-weight="700" fill="#2563eb">b = [1, 3]</text>
+  <text x="535" y="425" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" font-weight="700" fill="#16a34a">c = [4, 2]</text>
+  <text x="635" y="190" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" font-weight="700" fill="#ea580c">b + c = [5, 5]</text>
+  <text x="435" y="105" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" font-weight="700" fill="#7c3aed">3b = [3, 9]</text>
+
+  <rect x="790" y="150" width="360" height="500" rx="24" fill="#ffffff" stroke="#dbe3f0"/>
+  <text x="820" y="205" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="24" font-weight="700" fill="#0f172a">해석</text>
+
+  <text x="820" y="260" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">벡터 덧셈</text>
+  <text x="820" y="292" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="17" fill="#475569">[1, 3] + [4, 2] = [5, 5]</text>
+  <text x="820" y="324" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="16" fill="#64748b">같은 위치 원소끼리 더합니다.</text>
+
+  <text x="820" y="390" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">스칼라 곱</text>
+  <text x="820" y="422" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="17" fill="#475569">3 × [1, 3] = [3, 9]</text>
+  <text x="820" y="454" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="16" fill="#64748b">모든 원소에 같은 수를 곱합니다.</text>
+
+  <text x="820" y="520" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#334155">좌표 평면 해석</text>
+  <text x="820" y="552" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="16" fill="#64748b">벡터는 원점에서 시작하는 화살표처럼</text>
+  <text x="820" y="580" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="16" fill="#64748b">그려 보면 이해가 더 쉽습니다.</text>
+</svg>
