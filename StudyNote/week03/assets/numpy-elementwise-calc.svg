@@ -1,0 +1,80 @@
+<svg width="1100" height="650" viewBox="0 0 1100 650" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1100" height="650" fill="#f7f8fc"/>
+  <text x="60" y="60" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="28" font-weight="700" fill="#1f2937">배열 연산 (Element-wise &amp; Broadcasting)</text>
+
+  <!-- Box 1: Element-wise -->
+  <rect x="60" y="100" width="980" height="240" rx="20" fill="#ffffff" stroke="#d6dae6"/>
+  <text x="90" y="145" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="22" font-weight="700" fill="#111827">1. 원소별 연산 (Element-wise Addition)</text>
+  <text x="90" y="180" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#4b5563">같은 크기의 배열끼리 연산하면, 같은 위치(인덱스)의 원소끼리 연산됩니다.</text>
+
+  <g font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" text-anchor="middle">
+    <!-- arr1 -->
+    <rect x="120" y="210" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="200" y="210" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="280" y="210" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <text x="155" y="253" fill="#111827">1</text>
+    <text x="235" y="253" fill="#111827">2</text>
+    <text x="315" y="253" fill="#111827">3</text>
+    <text x="200" y="315" font-size="16" fill="#6b7280">arr1</text>
+
+    <text x="375" y="255" font-size="30" font-weight="bold" fill="#374151">+</text>
+
+    <!-- arr2 -->
+    <rect x="420" y="210" width="70" height="70" rx="12" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="500" y="210" width="70" height="70" rx="12" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="580" y="210" width="70" height="70" rx="12" fill="#dcfce7" stroke="#4ade80"/>
+    <text x="455" y="253" fill="#111827">4</text>
+    <text x="535" y="253" fill="#111827">5</text>
+    <text x="615" y="253" fill="#111827">6</text>
+    <text x="500" y="315" font-size="16" fill="#6b7280">arr2</text>
+
+    <text x="675" y="255" font-size="30" font-weight="bold" fill="#374151">=</text>
+
+    <!-- Result -->
+    <rect x="720" y="210" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <rect x="800" y="210" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <rect x="880" y="210" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <text x="755" y="253" fill="#111827">5</text>
+    <text x="835" y="253" fill="#111827">7</text>
+    <text x="915" y="253" fill="#111827">9</text>
+    <text x="800" y="315" font-size="16" fill="#6b7280">결과 배열</text>
+  </g>
+
+  <!-- Box 2: Broadcasting -->
+  <rect x="60" y="370" width="980" height="240" rx="20" fill="#ffffff" stroke="#d6dae6"/>
+  <text x="90" y="415" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="22" font-weight="700" fill="#111827">2. 브로드캐스팅 (Broadcasting)</text>
+  <text x="90" y="450" font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="18" fill="#4b5563">배열과 하나의 숫자(스칼라)를 연산하면, 그 숫자가 배열의 크기에 맞춰 가상으로 확장되어 연산됩니다.</text>
+
+  <g font-family="'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', sans-serif" font-size="20" text-anchor="middle">
+    <!-- arr1 -->
+    <rect x="120" y="480" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="200" y="480" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="280" y="480" width="70" height="70" rx="12" fill="#dbeafe" stroke="#60a5fa"/>
+    <text x="155" y="523" fill="#111827">1</text>
+    <text x="235" y="523" fill="#111827">2</text>
+    <text x="315" y="523" fill="#111827">3</text>
+
+    <text x="375" y="525" font-size="30" font-weight="bold" fill="#374151">×</text>
+
+    <!-- Scalar with virtual expansion -->
+    <rect x="420" y="480" width="70" height="70" rx="12" fill="#fef08a" stroke="#eab308" stroke-dasharray="4" opacity="0.6"/>
+    <rect x="500" y="480" width="70" height="70" rx="12" fill="#fef08a" stroke="#eab308"/>
+    <rect x="580" y="480" width="70" height="70" rx="12" fill="#fef08a" stroke="#eab308" stroke-dasharray="4" opacity="0.6"/>
+    <text x="455" y="523" fill="#854d0e" opacity="0.6">2</text>
+    <text x="535" y="523" fill="#854d0e" font-weight="bold">2</text>
+    <text x="615" y="523" fill="#854d0e" opacity="0.6">2</text>
+
+    <text x="500" y="585" font-size="16" fill="#a16207">가상으로 확장됨</text>
+
+    <text x="675" y="525" font-size="30" font-weight="bold" fill="#374151">=</text>
+
+    <!-- Result -->
+    <rect x="720" y="480" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <rect x="800" y="480" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <rect x="880" y="480" width="70" height="70" rx="12" fill="#f3e8ff" stroke="#c084fc"/>
+    <text x="755" y="523" fill="#111827">2</text>
+    <text x="835" y="523" fill="#111827">4</text>
+    <text x="915" y="523" fill="#111827">6</text>
+    <text x="800" y="585" font-size="16" fill="#6b7280">결과 배열</text>
+  </g>
+</svg>
