@@ -1,0 +1,49 @@
+<svg width="1100" height="460" viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1100" height="460" fill="#f8fafc"/>
+  <text x="60" y="60" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1f2937">Reshape</text>
+  <text x="60" y="95" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">Same values, different structure</text>
+
+  <rect x="60" y="130" width="380" height="250" rx="20" fill="#ffffff" stroke="#d6dae6"/>
+  <text x="90" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">Before</text>
+  <text x="90" y="210" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">shape = (6,)</text>
+
+  <g font-family="Arial, sans-serif" font-size="20" text-anchor="middle">
+    <rect x="90" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="145" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="200" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="255" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="310" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+    <rect x="365" y="250" width="45" height="55" rx="10" fill="#dbeafe" stroke="#60a5fa"/>
+
+    <text x="112.5" y="284" fill="#111827">1</text>
+    <text x="167.5" y="284" fill="#111827">2</text>
+    <text x="222.5" y="284" fill="#111827">3</text>
+    <text x="277.5" y="284" fill="#111827">4</text>
+    <text x="332.5" y="284" fill="#111827">5</text>
+    <text x="387.5" y="284" fill="#111827">6</text>
+  </g>
+
+  <path d="M 500 255 C 560 255, 560 255, 620 255" stroke="#0f172a" stroke-width="4" fill="none"/>
+  <polygon points="620,255 598,243 598,267" fill="#0f172a"/>
+  <text x="520" y="225" font-family="Arial, sans-serif" font-size="20" fill="#0f172a">reshape(2, 3)</text>
+
+  <rect x="680" y="130" width="360" height="250" rx="20" fill="#ffffff" stroke="#d6dae6"/>
+  <text x="710" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">After</text>
+  <text x="710" y="210" font-family="Arial, sans-serif" font-size="18" fill="#4b5563">shape = (2, 3)</text>
+
+  <g font-family="Arial, sans-serif" font-size="20" text-anchor="middle">
+    <rect x="735" y="235" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="815" y="235" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="895" y="235" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="735" y="305" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="815" y="305" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+    <rect x="895" y="305" width="70" height="60" rx="10" fill="#dcfce7" stroke="#4ade80"/>
+
+    <text x="770" y="273" fill="#111827">1</text>
+    <text x="850" y="273" fill="#111827">2</text>
+    <text x="930" y="273" fill="#111827">3</text>
+    <text x="770" y="343" fill="#111827">4</text>
+    <text x="850" y="343" fill="#111827">5</text>
+    <text x="930" y="343" fill="#111827">6</text>
+  </g>
+</svg>
