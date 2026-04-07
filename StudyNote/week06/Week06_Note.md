@@ -299,6 +299,57 @@ axes[1, 1].set_title('exp(x)')
 왜 필요한가
 - `plt.plot()`만 쓰면 하나의 그래프는 쉽게 그릴 수 있지만, 여러 그래프를 비교하려면 `subplots`와 `ax`를 다룰 수 있어야 하기 때문입니다.
 
+#### `plt.subplot(321)`는 어떻게 읽는가
+
+강의 자료에서는 `plt.subplot(321)`처럼 세 자리 숫자를 바로 넣는 방식도 자주 나옵니다.
+
+```python
+ax1 = plt.subplot(321)
+plt.plot(x, y_1)
+
+ax2 = plt.subplot(322)
+plt.plot(x, y_2)
+
+ax3 = plt.subplot(323)
+plt.plot(x, y_3)
+
+ax4 = plt.subplot(325)
+plt.plot(x, y_4)
+
+ax5 = plt.subplot(326)
+plt.plot(x, y_5)
+
+plt.show()
+```
+
+읽는 법
+- `321` = `3행`, `2열`, `1번째 칸`
+- `322` = `3행`, `2열`, `2번째 칸`
+- `323` = `3행`, `2열`, `3번째 칸`
+- `325` = `3행`, `2열`, `5번째 칸`
+- `326` = `3행`, `2열`, `6번째 칸`
+
+즉, `subplot(행열칸)`이라고 이해하면 됩니다.
+
+사용자가 적어 준 코드에서 교정할 부분
+- `Plt`가 아니라 `plt`
+- `plt. subplot`처럼 중간 공백이 들어가면 안 됨
+- `plt.shom()`은 오타이며 `plt.show()`가 맞음
+- `axl`은 숫자 `1`과 알파벳 `l`이 헷갈리므로 `ax1`이 더 안전함
+
+왜 필요한가
+- 강의 자료에서는 `subplot(321)` 표기법이 매우 자주 나오기 때문입니다.
+- 복잡하지 않은 배치를 빠르게 만들 때는 `subplot()`이 더 직관적일 수 있기 때문입니다.
+
+#### `subplot()`과 `subplots()` 차이
+
+- `plt.subplot(321)`
+  한 칸씩 직접 선택하면서 그리는 방식
+- `fig, axes = plt.subplots(2, 2)`
+  전체 격자를 한 번에 만들고 축 배열을 받아 쓰는 방식
+
+둘 다 맞는 문법이지만, 여러 축을 체계적으로 다루려면 보통 `subplots()`와 `ax.plot()`가 더 관리하기 쉽습니다.
+
 매출 데이터 예시
 
 ```python
@@ -433,6 +484,18 @@ jan_df.sort_values('ext price', ascending=False).head()
 올바른 방향
 - `tan`은 특정 구간에서 값이 급격히 커질 수 있으므로 `set_ylim()` 같은 축 제한을 같이 고려해야 합니다.
 
+### 실수 11. `subplot(321)`의 숫자 의미를 외우지 못함
+
+올바른 방향
+- 앞의 두 자리는 행과 열, 마지막 한 자리는 칸 번호라고 읽으면 됩니다.
+- `3행 2열 1칸`처럼 말로 풀어서 읽는 연습이 도움이 됩니다.
+
+### 실수 12. `plt.plot()`과 `ax.plot()`의 대상을 혼동함
+
+올바른 방향
+- 단일 그래프는 `plt.plot()`으로도 충분하지만, 여러 축 구조에서는 `ax.plot()`가 더 안전합니다.
+- 어떤 축에 그리고 있는지 분명히 하고 싶다면 `ax.plot()`를 우선 떠올리면 됩니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -444,6 +507,8 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `np.linspace`, `sin`, `cos`, `tan`, `exp`의 역할
 - `pd.read_excel()`로 여러 월 파일을 읽고 연결하는 흐름
 - `subplots(2,2)`, `ax.plot`의 의미
+- `subplot(321)`의 번호 체계
+- `subplot()`과 `subplots()` 차이
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`의 역할
 - `groupby()` 결과를 `matplotlib`으로 시각화하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
@@ -469,6 +534,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 
 - 6주차의 핵심은 `concat()`과 `merge()`를 구분하는 것입니다.
 - `np.linspace`, `sin`, `cos`, `tan`, `exp`는 그래프와 수치 함수 워밍업에 자주 쓰입니다.
+- `subplot(321)`는 `행-열-칸` 번호 체계이고, `subplots(2,2)`는 축 배열을 한 번에 만드는 방식입니다.
 - `subplots(2,2)`와 `ax.plot`을 쓰면 여러 그래프를 한 번에 정리할 수 있습니다.
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`는 판다스 기본 확인 함수입니다.
 - `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
