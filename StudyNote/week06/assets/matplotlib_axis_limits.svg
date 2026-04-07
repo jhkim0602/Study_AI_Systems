@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" style="background:#ffffff; font-family:sans-serif;">
+  <text x="400" y="35" fill="#2d3436" font-size="24" font-weight="bold" text-anchor="middle">축 범위 설정: xlim() / ylim()</text>
+  
+  <g transform="translate(70, 70)">
+    <text x="150" y="0" fill="#e17055" font-size="18" font-weight="bold" text-anchor="middle">설정 전 (자동 범위)</text>
+    <text x="150" y="25" fill="#636e72" font-size="14" text-anchor="middle">데이터의 전체 범위에 맞춰 표시됨</text>
+    <rect x="0" y="40" width="300" height="150" fill="#fcfcfc" stroke="#b2bec3" stroke-width="2"/>
+    <!-- Distant curve with a huge spike -->
+    <path d="M 20 170 Q 50 170 150 160 Q 160 50 170 160 Q 250 170 280 170" fill="none" stroke="#e17055" stroke-width="2"/>
+    <!-- Highlight Region to crop -->
+    <rect x="120" y="120" width="60" height="60" fill="none" stroke="#0984e3" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="150" y="110" fill="#0984e3" font-size="12" text-anchor="middle" font-weight="bold">확대할 구간 지정</text>
+  </g>
+  
+  <!-- Big Arrow -->
+  <path d="M 400 130 L 440 130" stroke="#b2bec3" stroke-width="4"/>
+  <polygon points="440,120 440,140 455,130" fill="#b2bec3"/>
+
+  <g transform="translate(480, 70)">
+    <text x="150" y="0" fill="#0984e3" font-size="18" font-weight="bold" text-anchor="middle">설정 후 (xlim, ylim 적용)</text>
+    <text x="150" y="25" fill="#636e72" font-size="14" text-anchor="middle">특정 구간만 잘라서 크게 확대 (Zoom-in)</text>
+    <rect x="0" y="40" width="300" height="150" fill="#e3f2fd" stroke="#0984e3" stroke-width="3"/>
+    <!-- Zoomed in spike -->
+    <path d="M -50 200 Q 100 150 120 -50 Q 160 150 350 200" fill="none" stroke="#e17055" stroke-width="8"/>
+    <text x="40" y="180" fill="#0984e3" font-size="16" font-weight="bold">set_xlim</text>
+    <text x="15" y="100" fill="#0984e3" font-size="16" font-weight="bold" transform="rotate(-90, 15, 100)">set_ylim</text>
+  </g>
+</svg>

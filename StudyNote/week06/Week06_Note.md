@@ -416,6 +416,9 @@ plt.show()
 
 그래프 크기를 정하는 방법은 두 가지를 자주 봅니다.
 
+> **참고 시각 자료: 그래프 크기 설정 방식**
+> ![Figure Size 변경](./assets/matplotlib_figure_size.svg)
+
 ```python
 fig, ax = plt.subplots(figsize=(6, 4))
 ```
@@ -439,6 +442,9 @@ fig.set_size_inches(10, 10)
 
 축 범위를 직접 조정하면 그래프가 훨씬 읽기 쉬워집니다.
 
+> **참고 시각 자료: 축 범위(Limit) 지정에 따른 구도 변화**
+> ![Axis Limits 조정](./assets/matplotlib_axis_limits.svg)
+
 ```python
 fig, ax = plt.subplots()
 ax.plot(x, np.tan(x))
@@ -457,6 +463,9 @@ ax.set_ylim(-5, 5)
 #### `scatter()`와 `hist()`
 
 선그래프 외에도 기초 시각화에서 자주 쓰는 함수입니다.
+
+> **참고 시각 자료: 기본 시각화 라이브러리(plot, scatter, hist) 비교**
+> ![Plot, Scatter, Hist 비교](./assets/matplotlib_plot_types.svg)
 
 ```python
 plt.scatter(x, np.sin(x), alpha=0.6)
