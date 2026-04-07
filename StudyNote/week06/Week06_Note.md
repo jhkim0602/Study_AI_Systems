@@ -2,7 +2,7 @@
 
 ## 1. 이 주제의 목적
 
-6주차의 목표는 `Pandas`에서 여러 `DataFrame`을 하나로 다루는 두 가지 핵심 방식, 즉 `concat()`과 `merge()`를 정확히 구분하고 상황에 맞게 사용하는 것입니다.
+6주차의 목표는 `Pandas`에서 여러 `DataFrame`을 하나로 다루는 두 가지 핵심 방식, 즉 `concat()`과 `merge()`를 정확히 구분하고 상황에 맞게 사용하는 것입니다. 이번에는 추상 예제가 아니라 실제 월별 매출 엑셀 파일 `sales-jan-2014.xlsx`, `sales-feb-2014.xlsx`, `sales-mar-2014.xlsx`를 기준으로 정리합니다.
 
 이 주차에서 가장 중요한 질문은 문법이 아니라 아래입니다.
 
@@ -10,7 +10,7 @@
 - 아니면 공통 기준을 보고 매칭해야 하는가?
 - 어떤 표를 기준으로 결과를 남겨야 하는가?
 
-즉, 6주차는 단순 함수 사용법보다 데이터 관계를 읽는 훈련에 가깝습니다.
+즉, 6주차는 단순 함수 사용법보다 데이터 관계를 읽는 훈련에 가깝습니다. 여기에 더해 교수님이 함께 제공한 함수 표면·gradient 시각화 코드도 별도 부록 성격으로 함께 정리합니다.
 
 ## 2. 왜 중요한가
 
@@ -19,6 +19,8 @@
 - 학생 정보표와 성적표가 따로 있을 수 있고
 - 사용자 정보표와 구매 이력표가 분리되어 있을 수 있고
 - 월별 데이터가 파일별로 나뉘어 있을 수 있습니다
+
+이번 실습이 정확히 그 경우입니다. 2014년 1월, 2월, 3월 매출이 각각 다른 엑셀 파일에 저장되어 있으므로 먼저 연결이 필요하고, 이후 고객 보조 정보와 결합하려면 병합이 필요합니다.
 
 이때 필요한 작업이 바로 병합과 연결입니다.
 
@@ -38,11 +40,41 @@
 
 연결 포인트
 - 실습 코드: [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- 실습 데이터: [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
+- 실습 데이터: [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
+- 실습 데이터: [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)
 - 이전 주차 구조 감각: [../week03/Week03_Note.md](../week03/Week03_Note.md)
 
 ## 4. 핵심 개념과 용어 해설
 
-### 4-1. `DataFrame`
+### 4-1. 실습 데이터 구성
+
+이번 실습 데이터는 아래 3개 파일입니다.
+
+- `sales-jan-2014.xlsx`
+- `sales-feb-2014.xlsx`
+- `sales-mar-2014.xlsx`
+
+각 파일은 같은 열 구조를 가지고 있습니다.
+
+- `account number`
+- `name`
+- `sku`
+- `quantity`
+- `unit price`
+- `ext price`
+- `date`
+
+행 수
+- 1월: 134행
+- 2월: 108행
+- 3월: 142행
+
+이 구조를 보면 바로 떠올려야 할 것
+- 열 구조가 같으므로 `concat(axis=0)`이 자연스럽다
+- 이후 고객 보조 정보표를 붙일 때는 `merge()`가 필요하다
+
+### 4-2. `DataFrame`
 
 `DataFrame`은 Pandas의 기본 표 구조입니다.
 
@@ -61,7 +93,7 @@ df_score = pd.DataFrame(raw_data, columns=["subject_id", "test_score"])
 왜 필요한가
 - `concat()`과 `merge()`는 `DataFrame`끼리 수행하는 연산이기 때문입니다.
 
-### 4-2. 키 열(key column)
+### 4-3. 키 열(key column)
 
 병합에서 가장 중요한 개념은 키 열입니다. 키 열은 서로 다른 표에서 같은 대상을 식별하는 기준입니다.
 
@@ -82,12 +114,16 @@ df_right = pd.DataFrame({
 - 같은 사람인지 판별하는 식별자
 - 값이 어긋나면 병합 결과도 어긋난다
 
-### 4-3. `concat()`
+### 4-4. `concat()`
 
 `concat()`은 표를 이어 붙이는 함수입니다.
 
 ```python
-row_concat = pd.concat([df_class_a, df_class_b], axis=0, ignore_index=True)
+sales_all = pd.concat(
+    [frame.assign(month=month) for month, frame in monthly_frames.items()],
+    axis=0,
+    ignore_index=True
+)
 ```
 
 핵심
@@ -96,25 +132,31 @@ row_concat = pd.concat([df_class_a, df_class_b], axis=0, ignore_index=True)
 
 왜 필요한가
 - 같은 구조의 데이터가 여러 조각으로 나뉘어 있을 때 하나로 합치기 위해서입니다.
+- 이번 실습에서는 1월, 2월, 3월 엑셀 파일을 하나의 매출표로 통합하기 위해 사용합니다.
 
 기억할 문장
 - `concat()`은 "매칭"보다 "연결"입니다.
 
-### 4-4. `merge()`
+### 4-5. `merge()`
 
 `merge()`는 공통 열을 기준으로 서로 다른 정보를 결합하는 함수입니다.
 
 ```python
-inner_result = pd.merge(df_left, df_right, on="subject_id", how="inner")
+customer_with_meta = pd.merge(
+    customer_summary,
+    account_meta,
+    on="account number",
+    how="left"
+)
 ```
 
 왜 필요한가
-- 이름표와 성적표처럼 서로 다른 속성을 가진 표를 하나로 맞춰야 하기 때문입니다.
+- 매출 요약표와 고객 메타데이터처럼 서로 다른 속성을 가진 표를 하나로 맞춰야 하기 때문입니다.
 
 기억할 문장
 - `merge()`는 "이어 붙이기"가 아니라 "키 기준 매칭"입니다.
 
-### 4-5. 조인 종류
+### 4-6. 조인 종류
 
 #### `inner`
 
@@ -161,7 +203,7 @@ pd.merge(df_left, df_right, on="subject_id", how="outer")
 - `right`: 오른쪽 기준 보존
 - `outer`: 전체 보존
 
-### 4-6. 자주 쓰는 옵션
+### 4-7. 자주 쓰는 옵션
 
 #### 열 이름이 다를 때
 
@@ -194,20 +236,24 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 
 관련 실습
 - [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
+- [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
+- [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)
 
 추천 실습 순서
-1. `raw_data`를 `DataFrame`으로 만들기
-2. `df_left`, `df_right` 준비하기
-3. `concat(axis=0)`로 위아래 연결 보기
-4. `concat(axis=1)`로 좌우 연결 보기
-5. `inner`, `left`, `right`, `outer` 비교하기
-6. `left_on`, `right_on`, `suffixes`, `indicator=True` 확인하기
-7. 중복 키 사례 보기
+1. 3개의 월별 엑셀 파일을 `pd.read_excel()`로 읽기
+2. `concat(axis=0)`로 3개월 데이터를 연결하기
+3. `shape`, `columns`, `dtypes` 점검하기
+4. `groupby()`로 월별 매출과 고객별 매출 요약하기
+5. 고객 메타데이터 표를 만들어 `merge()`하기
+6. `indicator=True`로 병합 누락 점검하기
+7. 교수님 추가 코드인 2D/3D gradient 시각화 예제 보기
 
 실습 중 계속 확인할 질문
 - 지금 이 표들은 누적 관계인가, 매칭 관계인가?
 - 기준이 되는 키 열은 무엇인가?
 - 병합 후 `NaN`이 생기면 왜 생겼는가?
+- 이 시각화 코드는 이번 주 핵심 주제와 직접 연결되는가, 아니면 별도 부록 성격인가?
 
 ## 6. 자주 하는 실수
 
@@ -239,6 +285,12 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 올바른 방향
 - 수업 예시에서 `test_scor` 같은 오타가 보이면 실제 코드는 반드시 확인해야 합니다.
 
+### 실수 6. 같은 구조의 월별 파일인데 `merge()`부터 하려고 함
+
+올바른 방향
+- 열 구조가 같고 누적 관계라면 먼저 `concat()`을 떠올려야 합니다.
+- `merge()`는 공통 키를 기준으로 서로 다른 정보를 붙일 때 사용합니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -247,15 +299,20 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 - 키 열이 왜 중요한가
 - `inner`, `left`, `right`, `outer` 차이
 - `NaN`이 생기는 이유
+- `pd.read_excel()`로 여러 월 파일을 읽고 연결하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
+- 추가 제공 gradient 코드가 6주차 핵심 실습과는 별도임을 구분하는 설명
 
 서술형 답안 구조 예시
 
-> Pandas에서 여러 `DataFrame`을 합칠 때는 `concat()`과 `merge()`를 사용한다. `concat()`은 같은 구조의 데이터를 위아래 또는 좌우로 단순 연결할 때 사용하며, `merge()`는 `subject_id`와 같은 공통 키를 기준으로 서로 다른 정보를 결합할 때 사용한다. `merge()`에서는 `inner`, `left`, `right`, `outer` 조인을 선택할 수 있고, 기준 표에 없는 데이터는 `NaN`으로 나타날 수 있다. 실전에서는 병합 전 열 이름, 자료형, 중복 키를 먼저 점검하는 것이 중요하다.
+> Pandas에서 여러 `DataFrame`을 합칠 때는 `concat()`과 `merge()`를 사용한다. 예를 들어 1월, 2월, 3월 매출 엑셀 파일처럼 같은 구조의 월별 데이터는 `pd.read_excel()`로 읽은 뒤 `concat()`으로 위아래 연결한다. 그 후 고객 지역이나 세그먼트 같은 추가 정보는 공통 키인 `account number`를 기준으로 `merge()`한다. `merge()`에서는 `inner`, `left`, `right`, `outer` 조인을 선택할 수 있고, 기준 표에 없는 데이터는 `NaN`으로 나타날 수 있다. 실전에서는 병합 전 열 이름, 자료형, 중복 키를 먼저 점검하는 것이 중요하다.
 
 ## 8. 기존 문서와 연결 포인트
 
 - 실습 코드: [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- 실습 데이터: [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
+- 실습 데이터: [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
+- 실습 데이터: [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)
 - 보충 문서: [notes/00_dataframe_and_keys.md](./notes/00_dataframe_and_keys.md)
 - 보충 문서: [notes/01_concat_basics.md](./notes/01_concat_basics.md)
 - 보충 문서: [notes/02_merge_join_types.md](./notes/02_merge_join_types.md)
@@ -265,6 +322,7 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 ## 9. 빠른 요약
 
 - 6주차의 핵심은 `concat()`과 `merge()`를 구분하는 것입니다.
-- `concat()`은 연결, `merge()`는 키 기준 병합입니다.
+- `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
+- 고객 메타정보처럼 다른 속성표를 붙일 때는 `merge()`를 씁니다.
 - 키 열, 자료형, 중복 여부를 먼저 봐야 합니다.
-- 조인 종류는 어떤 표를 기준으로 남길지 결정하는 문제입니다.
+- 교수님 제공 gradient 코드는 참고용 추가 코드로 분리해서 보는 것이 좋습니다.
