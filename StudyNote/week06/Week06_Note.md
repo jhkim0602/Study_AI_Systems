@@ -142,7 +142,7 @@ df_right = pd.DataFrame({
 - 값이 어긋나면 병합 결과도 어긋난다
 
 > **참고 시각 자료: 연결(Concat) vs 병합(Merge)**
-> ![Concat vs Merge](./assets/pandas_concat_merge.png)
+> ![Concat vs Merge](./assets/pandas_concat_merge.svg)
 
 ### 4-5. `concat()`
 
@@ -159,6 +159,9 @@ sales_all = pd.concat(
 핵심
 - `axis=0`: 위아래 연결
 - `axis=1`: 좌우 연결
+
+> **참고 시각 자료: concat(axis=0) vs concat(axis=1)**
+> ![Concat Axis 0 vs 1](./assets/pandas_concat_axis_0_vs_1.svg)
 
 왜 필요한가
 - 같은 구조의 데이터가 여러 조각으로 나뉘어 있을 때 하나로 합치기 위해서입니다.
@@ -188,7 +191,8 @@ customer_with_meta = pd.merge(
 
 ### 4-7. 조인 종류
 
-![데이터베이스 및 판다스 병합(Join) 벤 다이어그램](./assets/pandas_join_types.png)
+> **참고 시각 자료: Pandas 조인(병합) 벤 다이어그램**
+> ![데이터베이스 및 판다스 병합(Join) 벤 다이어그램](./assets/pandas_join_types.svg)
 
 #### `inner`
 

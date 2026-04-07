@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" style="background:#ffffff; font-family:sans-serif;">
+  <text x="400" y="35" fill="#2d3436" font-size="24" font-weight="bold" text-anchor="middle">Pandas: 연결(Concat) vs 병합(Merge)</text>
+  
+  <!-- Concat Section -->
+  <g transform="translate(50, 70)">
+    <rect x="0" y="0" width="300" height="250" rx="8" fill="#f1f2f6" stroke="#dcdde1" stroke-width="2"/>
+    <text x="150" y="30" fill="#0984e3" font-size="20" font-weight="bold" text-anchor="middle">pd.concat()</text>
+    <text x="150" y="55" fill="#636e72" font-size="14" text-anchor="middle">레고 블록처럼 구조를 '그대로' 이어붙임</text>
+    
+    <!-- Table 1 -->
+    <rect x="50" y="70" width="200" height="60" fill="#74b9ff" rx="4"/>
+    <text x="150" y="105" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">1월 데이터 (행 100개)</text>
+    
+    <!-- Plus symbol -->
+    <text x="150" y="155" fill="#2d3436" font-size="24" font-weight="bold" text-anchor="middle">+</text>
+    
+    <!-- Table 2 -->
+    <rect x="50" y="170" width="200" height="60" fill="#0984e3" rx="4"/>
+    <text x="150" y="205" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">2월 데이터 (행 150개)</text>
+  </g>
+
+  <!-- Merge Section -->
+  <g transform="translate(400, 70)">
+    <rect x="0" y="0" width="350" height="250" rx="8" fill="#f1f2f6" stroke="#dcdde1" stroke-width="2"/>
+    <text x="175" y="30" fill="#00b894" font-size="20" font-weight="bold" text-anchor="middle">pd.merge()</text>
+    <text x="175" y="55" fill="#636e72" font-size="14" text-anchor="middle">공통된 '열(Key)'을 기준으로 정보를 하나로 결합</text>
+    
+    <!-- Table Left -->
+    <rect x="20" y="70" width="120" height="70" fill="#55efc4" rx="4"/>
+    <text x="70" y="100" fill="#2d3436" font-size="14" font-weight="bold" text-anchor="middle">사용자표</text>
+    <text x="70" y="125" fill="#2d3436" font-size="12" text-anchor="middle">(ID, 이름)</text>
+    
+    <!-- Table Right -->
+    <rect x="210" y="70" width="120" height="70" fill="#00b894" rx="4"/>
+    <text x="270" y="100" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">결제표</text>
+    <text x="270" y="125" fill="#fff" font-size="12" text-anchor="middle">(ID, 금액)</text>
+    
+    <!-- Arrows -->
+    <path d="M 80 140 L 150 180" stroke="#b2bec3" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 270 140 L 200 180" stroke="#b2bec3" stroke-width="3" marker-end="url(#arrow)"/>
+    
+    <!-- Result Table -->
+    <rect x="85" y="180" width="180" height="50" fill="#2d3436" rx="4"/>
+    <text x="175" y="210" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">결합된 데이터 (ID, 이름, 금액)</text>
+    
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" style="background:#2f3542; font-family:sans-serif;">
+  <text x="400" y="35" fill="#ffffff" font-size="24" font-weight="bold" text-anchor="middle">concat(axis=0) vs concat(axis=1) 직관적 이해</text>
+  
+  <!-- axis=0 -->
+  <g transform="translate(100, 70)">
+    <text x="120" y="0" fill="#ffa502" font-size="20" font-weight="bold" text-anchor="middle">axis=0 (위아래 이어붙이기)</text>
+    <text x="120" y="200" fill="#f1f2f6" font-size="14" text-anchor="middle">행(Row) 단위 데이터 누적 (예: 1월 + 2월 매출)</text>
+    
+    <!-- Table A -->
+    <rect x="70" y="30" width="100" height="50" rx="4" fill="#a4b0be" stroke="#ffffff" stroke-width="1"/>
+    <text x="120" y="60" fill="#2f3542" font-weight="bold" text-anchor="middle" font-size="14">dfA (10행)</text>
+    <path d="M 120 90 L 120 110" stroke="#ffa502" stroke-width="4" marker-end="url(#arrow)"/>
+    <!-- Table B -->
+    <rect x="70" y="120" width="100" height="40" rx="4" fill="#747d8c" stroke="#ffffff" stroke-width="1"/>
+    <text x="120" y="145" fill="#ffffff" font-weight="bold" text-anchor="middle" font-size="14">dfB (20행)</text>
+    
+    <rect x="185" y="30" width="8" height="130" fill="#ffa502" rx="4"/>
+    <text x="210" y="100" fill="#ffa502" font-size="12" font-weight="bold">총 30행</text>
+  </g>
+
+  <!-- axis=1 -->
+  <g transform="translate(450, 70)">
+    <text x="120" y="0" fill="#1e90ff" font-size="20" font-weight="bold" text-anchor="middle">axis=1 (좌우 이어붙이기)</text>
+    <text x="120" y="200" fill="#f1f2f6" font-size="14" text-anchor="middle">열(Column) 단위 속성 추가 (병합과 유사한 형태)</text>
+    
+    <!-- Table A -->
+    <rect x="0" y="30" width="90" height="100" rx="4" fill="#a4b0be" stroke="#ffffff" stroke-width="1"/>
+    <text x="45" y="85" fill="#2f3542" font-weight="bold" text-anchor="middle" font-size="14">dfA (2열)</text>
+    
+    <path d="M 100 80 L 120 80" stroke="#1e90ff" stroke-width="4"/>
+    
+    <!-- Table B -->
+    <rect x="130" y="30" width="90" height="100" rx="4" fill="#747d8c" stroke="#ffffff" stroke-width="1"/>
+    <text x="175" y="85" fill="#ffffff" font-weight="bold" text-anchor="middle" font-size="14">dfB (3열)</text>
+    
+    <rect x="0" y="140" width="220" height="8" fill="#1e90ff" rx="4"/>
+    <text x="110" y="165" fill="#1e90ff" font-size="12" font-weight="bold" text-anchor="middle">총 5열로 가로로 팽창</text>
+  </g>
+</svg>

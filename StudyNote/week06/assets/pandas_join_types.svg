@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" style="background:#ffffff; font-family:sans-serif;">
+  <text x="400" y="40" fill="#2d3436" font-size="28" font-weight="bold" text-anchor="middle">Pandas 조인(병합) 종류 시각화</text>
+  <text x="400" y="70" fill="#636e72" font-size="16" text-anchor="middle">데이터베이스 설계와 완전히 동일한 벤다이어그램 개념</text>
+  
+  <!-- INNER JOIN -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+    <text x="140" y="30" fill="#e17055" font-size="18" font-weight="bold" text-anchor="middle">how="inner" (교집합)</text>
+    <text x="140" y="160" fill="#636e72" font-size="14" text-anchor="middle">양쪽 표에 키가 다 있는 것만 남김</text>
+    
+    <circle cx="110" cy="90" r="45" fill="none" stroke="#e17055" stroke-width="3"/>
+    <circle cx="170" cy="90" r="45" fill="none" stroke="#e17055" stroke-width="3"/>
+    <!-- Intersection arc -->
+    <path d="M 140 51.5 A 45 45 0 0 0 140 128.5 A 45 45 0 0 0 140 51.5" fill="#e17055" fill-opacity="0.8"/>
+  </g>
+  
+  <!-- FULL OUTER JOIN -->
+  <g transform="translate(420, 100)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+    <text x="140" y="30" fill="#6c5ce7" font-size="18" font-weight="bold" text-anchor="middle">how="outer" (합집합)</text>
+    <text x="140" y="160" fill="#636e72" font-size="14" text-anchor="middle">양쪽 표의 모든 정보를 일단 다 살림</text>
+    
+    <circle cx="110" cy="90" r="45" fill="#6c5ce7" fill-opacity="0.8"/>
+    <circle cx="170" cy="90" r="45" fill="#6c5ce7" fill-opacity="0.8"/>
+  </g>
+
+  <!-- LEFT JOIN -->
+  <g transform="translate(100, 300)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+    <text x="140" y="30" fill="#0984e3" font-size="18" font-weight="bold" text-anchor="middle">how="left" (메인/보조표 결합)</text>
+    <text x="140" y="160" fill="#636e72" font-size="14" text-anchor="middle">왼쪽 표는 무조건 보존, 오른쪽은 매칭만</text>
+    
+    <circle cx="110" cy="90" r="45" fill="#0984e3" fill-opacity="0.8"/>
+    <circle cx="170" cy="90" r="45" fill="none" stroke="#0984e3" stroke-width="3"/>
+  </g>
+
+  <!-- RIGHT JOIN -->
+  <g transform="translate(420, 300)">
+    <rect x="0" y="0" width="280" height="180" rx="8" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
+    <text x="140" y="30" fill="#00b894" font-size="18" font-weight="bold" text-anchor="middle">how="right"</text>
+    <text x="140" y="160" fill="#636e72" font-size="14" text-anchor="middle">오른쪽 표는 무조건 보존, 왼쪽은 매칭만</text>
+    
+    <circle cx="110" cy="90" r="45" fill="none" stroke="#00b894" stroke-width="3"/>
+    <circle cx="170" cy="90" r="45" fill="#00b894" fill-opacity="0.8"/>
+  </g>
+</svg>
