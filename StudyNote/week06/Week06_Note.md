@@ -412,6 +412,80 @@ plt.show()
 - `plt.plot()`는 빠르게 그릴 때 편함
 - `ax.plot()`는 제목, 축 이름, 범례처럼 축 단위 설정을 체계적으로 붙이기 좋음
 
+#### `figsize`와 `fig.set_size_inches()`
+
+그래프 크기를 정하는 방법은 두 가지를 자주 봅니다.
+
+```python
+fig, ax = plt.subplots(figsize=(6, 4))
+```
+
+또는
+
+```python
+fig, ax = plt.subplots()
+fig.set_size_inches(10, 10)
+```
+
+의미
+- `figsize=(6, 4)`는 그림을 만들 때 크기를 바로 지정하는 방식
+- `fig.set_size_inches(10, 10)`은 만든 뒤 크기를 조정하는 방식
+
+왜 필요한가
+- 강의 자료나 예제 코드에서 두 문법이 모두 자주 나오기 때문입니다.
+- 상황에 따라 나중에 크기를 바꾸고 싶을 수 있기 때문입니다.
+
+#### `ax.set_xlim()`과 `ax.set_ylim()`
+
+축 범위를 직접 조정하면 그래프가 훨씬 읽기 쉬워집니다.
+
+```python
+fig, ax = plt.subplots()
+ax.plot(x, np.tan(x))
+ax.set_xlim(-1, 1)
+ax.set_ylim(-5, 5)
+```
+
+왜 필요한가
+- `tan(x)`처럼 값이 급격하게 커지는 그래프를 보기 좋게 제한할 수 있기 때문입니다.
+- 산점도나 매출 그래프에서도 보고 싶은 구간만 강조할 수 있기 때문입니다.
+
+비슷한 개념
+- `plt.xlim(...)`, `plt.ylim(...)`
+- `ax.set_xticks(...)`, `ax.set_yticks(...)`
+
+#### `scatter()`와 `hist()`
+
+선그래프 외에도 기초 시각화에서 자주 쓰는 함수입니다.
+
+```python
+plt.scatter(x, np.sin(x), alpha=0.6)
+plt.hist(np.random.normal(size=100), bins=20)
+```
+
+의미
+- `scatter`: 두 변수의 점 분포
+- `hist`: 값의 분포와 빈도
+
+왜 필요한가
+- `plot`은 추세에 적합하고
+- `scatter`는 관계에 적합하고
+- `hist`는 분포에 적합하기 때문입니다.
+
+#### `savefig()`
+
+그래프는 화면에 띄우는 것뿐 아니라 파일로 저장하는 경우도 많습니다.
+
+```python
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, np.sin(x))
+fig.savefig('example_plot.png', dpi=150)
+```
+
+왜 필요한가
+- 보고서, 과제, 발표 자료에 그래프 이미지를 넣어야 할 수 있기 때문입니다.
+- `dpi`를 조절하면 저장 품질을 관리할 수 있기 때문입니다.
+
 매출 데이터 예시
 
 ```python
@@ -567,6 +641,33 @@ jan_df.sort_values('ext price', ascending=False).head()
 - 시각화 예제에서는 변수명을 일관되게 써야 합니다.
 - 특히 리스트 컴프리헨션 안에서 다른 변수명을 참조하면 바로 오류가 납니다.
 
+### 실수 14. 그래프 크기 조절 문법을 하나만 안다고 생각함
+
+올바른 방향
+- `figsize=(w, h)`도 가능하고 `fig.set_size_inches(w, h)`도 가능합니다.
+- 둘 다 같은 목적이라는 점을 이해해 두면 좋습니다.
+
+### 실수 15. 축 범위를 자동값에만 맡김
+
+올바른 방향
+- `ax.set_xlim()`, `ax.set_ylim()`으로 필요한 구간을 직접 조정할 수 있어야 합니다.
+- 특히 `tan`, 산점도, 이상치가 있는 데이터에서 중요합니다.
+
+### 실수 16. 모든 데이터를 선그래프로만 그리려 함
+
+올바른 방향
+- 추세는 `plot`
+- 관계는 `scatter`
+- 분포는 `hist`
+- 범주 비교는 `bar`, `barh`
+
+처럼 목적에 맞는 그래프를 골라야 합니다.
+
+### 실수 17. `show()`만 하고 저장은 못 함
+
+올바른 방향
+- 결과물을 제출하거나 문서에 넣으려면 `savefig()`도 알아야 합니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -582,6 +683,9 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `subplot()`과 `subplots()` 차이
 - `plt.plot(x, y, color=...)`와 `ax.plot(...)` 차이
 - `color=`와 `c=`의 의미
+- `figsize`와 `fig.set_size_inches()` 차이
+- `ax.set_xlim()`, `ax.set_ylim()`의 역할
+- `scatter()`, `hist()`, `savefig()`의 목적
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`의 역할
 - `groupby()` 결과를 `matplotlib`으로 시각화하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
@@ -610,6 +714,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `subplot(321)`는 `행-열-칸` 번호 체계이고, `subplots(2,2)`는 축 배열을 한 번에 만드는 방식입니다.
 - `subplots(2,2)`와 `ax.plot`을 쓰면 여러 그래프를 한 번에 정리할 수 있습니다.
 - `plt.plot(x, y, color=...)`는 가장 기본적인 선그래프 문법이고, `c=`는 색상 인자의 축약형입니다.
+- `fig.set_size_inches()`, `ax.set_xlim()`, `ax.set_ylim()`, `scatter()`, `hist()`, `savefig()`도 기본 시각화 범위에 포함됩니다.
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`는 판다스 기본 확인 함수입니다.
 - `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
 - 연결 후 `groupby()` 결과는 `matplotlib`으로 시각화하면 검증이 쉬워집니다.
