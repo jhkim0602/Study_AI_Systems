@@ -10,7 +10,7 @@
 - 아니면 공통 기준을 보고 매칭해야 하는가?
 - 어떤 표를 기준으로 결과를 남겨야 하는가?
 
-즉, 6주차는 단순 함수 사용법보다 데이터 관계를 읽는 훈련에 가깝습니다. 여기에 더해 교수님이 함께 제공한 함수 표면·gradient 시각화 코드도 별도 부록 성격으로 함께 정리합니다.
+즉, 6주차는 단순 함수 사용법보다 데이터 관계를 읽는 훈련에 가깝습니다. 여기에 더해 연결과 병합이 끝난 결과를 빠르게 검증하기 위한 `matplotlib` 시각화도 함께 다룹니다. 교수님이 함께 제공한 함수 표면·gradient 시각화 코드는 별도 부록 성격으로 함께 정리합니다.
 
 ## 2. 왜 중요한가
 
@@ -232,6 +232,38 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 왜 필요한가
 - `left_only`, `right_only`, `both`로 어느 쪽에서 왔는지 검증할 수 있기 때문입니다.
 
+### 4-8. `matplotlib`
+
+`matplotlib`은 `Pandas`로 정리한 결과를 눈으로 빠르게 검증할 때 가장 기본이 되는 시각화 도구입니다.
+
+이번 실습에서는 아래 흐름으로 사용하는 것이 자연스럽습니다.
+
+1. `read_excel()`로 월별 파일을 읽는다
+2. `concat()`으로 하나의 표로 합친다
+3. `groupby()`로 월별 매출이나 고객별 매출을 요약한다
+4. `matplotlib`으로 막대그래프와 선그래프로 흐름을 확인한다
+
+예시
+
+```python
+plt.figure(figsize=(8, 4))
+plt.bar(monthly_summary['month'], monthly_summary['total_sales'], color='steelblue')
+plt.title('Monthly Total Sales')
+plt.xlabel('Month')
+plt.ylabel('Total Sales')
+plt.show()
+```
+
+이 코드를 보면 떠올려야 하는 것
+- `figure`: 그림 크기 설정
+- `bar`: 범주형 비교에 적합한 막대그래프
+- `plot`: 추세를 볼 때 적합한 선그래프
+- `xlabel`, `ylabel`, `title`: 그래프 의미를 명확히 적는 기본 요소
+
+왜 필요한가
+- 숫자 표만 보면 놓치기 쉬운 월별 증가/감소 흐름을 바로 볼 수 있기 때문입니다.
+- 병합과 연결이 제대로 되었는지 결과를 빠르게 검증할 수 있기 때문입니다.
+
 ## 5. 실습 파일과 핵심 흐름
 
 관련 실습
@@ -245,14 +277,16 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 2. `concat(axis=0)`로 3개월 데이터를 연결하기
 3. `shape`, `columns`, `dtypes` 점검하기
 4. `groupby()`로 월별 매출과 고객별 매출 요약하기
-5. 고객 메타데이터 표를 만들어 `merge()`하기
-6. `indicator=True`로 병합 누락 점검하기
-7. 교수님 추가 코드인 2D/3D gradient 시각화 예제 보기
+5. `matplotlib`으로 월별 매출과 상위 고객 매출 시각화하기
+6. 고객 메타데이터 표를 만들어 `merge()`하기
+7. `indicator=True`로 병합 누락 점검하기
+8. 교수님 추가 코드인 2D/3D gradient 시각화 예제 보기
 
 실습 중 계속 확인할 질문
 - 지금 이 표들은 누적 관계인가, 매칭 관계인가?
 - 기준이 되는 키 열은 무엇인가?
 - 병합 후 `NaN`이 생기면 왜 생겼는가?
+- 그래프로 그렸을 때 연결 결과의 추세가 자연스럽게 보이는가?
 - 이 시각화 코드는 이번 주 핵심 주제와 직접 연결되는가, 아니면 별도 부록 성격인가?
 
 ## 6. 자주 하는 실수
@@ -291,6 +325,18 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 - 열 구조가 같고 누적 관계라면 먼저 `concat()`을 떠올려야 합니다.
 - `merge()`는 공통 키를 기준으로 서로 다른 정보를 붙일 때 사용합니다.
 
+### 실수 7. 숫자형 변환 전에 그래프를 그림
+
+올바른 방향
+- `date`는 날짜형으로, `ext price`와 `quantity`는 숫자형으로 정리한 뒤 그려야 합니다.
+- 시각화 전 자료형 점검은 필수입니다.
+
+### 실수 8. 그래프 제목과 축 라벨을 생략함
+
+올바른 방향
+- `title`, `xlabel`, `ylabel`을 적어야 그래프 해석이 쉬워집니다.
+- 시험이나 보고서에서는 "무엇을 보여 주는 그래프인지"를 명확히 써야 합니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -300,12 +346,13 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 - `inner`, `left`, `right`, `outer` 차이
 - `NaN`이 생기는 이유
 - `pd.read_excel()`로 여러 월 파일을 읽고 연결하는 흐름
+- `groupby()` 결과를 `matplotlib`으로 시각화하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
 - 추가 제공 gradient 코드가 6주차 핵심 실습과는 별도임을 구분하는 설명
 
 서술형 답안 구조 예시
 
-> Pandas에서 여러 `DataFrame`을 합칠 때는 `concat()`과 `merge()`를 사용한다. 예를 들어 1월, 2월, 3월 매출 엑셀 파일처럼 같은 구조의 월별 데이터는 `pd.read_excel()`로 읽은 뒤 `concat()`으로 위아래 연결한다. 그 후 고객 지역이나 세그먼트 같은 추가 정보는 공통 키인 `account number`를 기준으로 `merge()`한다. `merge()`에서는 `inner`, `left`, `right`, `outer` 조인을 선택할 수 있고, 기준 표에 없는 데이터는 `NaN`으로 나타날 수 있다. 실전에서는 병합 전 열 이름, 자료형, 중복 키를 먼저 점검하는 것이 중요하다.
+> Pandas에서 여러 `DataFrame`을 합칠 때는 `concat()`과 `merge()`를 사용한다. 예를 들어 1월, 2월, 3월 매출 엑셀 파일처럼 같은 구조의 월별 데이터는 `pd.read_excel()`로 읽은 뒤 `concat()`으로 위아래 연결한다. 이후 `groupby()`로 월별 매출을 요약하고 `matplotlib`의 막대그래프나 선그래프로 결과를 빠르게 확인할 수 있다. 그 후 고객 지역이나 세그먼트 같은 추가 정보는 공통 키인 `account number`를 기준으로 `merge()`한다. `merge()`에서는 `inner`, `left`, `right`, `outer` 조인을 선택할 수 있고, 기준 표에 없는 데이터는 `NaN`으로 나타날 수 있다.
 
 ## 8. 기존 문서와 연결 포인트
 
@@ -323,6 +370,7 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 
 - 6주차의 핵심은 `concat()`과 `merge()`를 구분하는 것입니다.
 - `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
+- 연결 후 `groupby()` 결과는 `matplotlib`으로 시각화하면 검증이 쉬워집니다.
 - 고객 메타정보처럼 다른 속성표를 붙일 때는 `merge()`를 씁니다.
 - 키 열, 자료형, 중복 여부를 먼저 봐야 합니다.
 - 교수님 제공 gradient 코드는 참고용 추가 코드로 분리해서 보는 것이 좋습니다.
