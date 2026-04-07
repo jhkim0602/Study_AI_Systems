@@ -481,6 +481,80 @@ plt.hist(np.random.normal(size=100), bins=20)
 - `scatter`는 관계에 적합하고
 - `hist`는 분포에 적합하기 때문입니다.
 
+#### `bar()`와 누적 막대그래프(stacked bar)
+
+범주별 값을 비교할 때는 `bar()`를 많이 사용합니다.  
+여러 계층의 값을 한 막대 안에 누적해서 보여 주고 싶을 때는 `bottom=` 옵션을 씁니다.
+
+> **참고 시각 자료: 누적 막대그래프 구조**
+> ![Stacked Bar](./assets/matplotlib_stacked_bar.svg)
+
+사용자가 준 코드를 오타 없이 정리하면 아래처럼 쓸 수 있습니다.
+
+```python
+data = np.array([
+    [5., 25., 50., 20.],
+    [4., 23., 51., 17.],
+    [6., 22., 52., 19.]
+])
+
+color_list = ['b', 'g', 'r']
+data_label = ['A', 'B', 'C']
+X = np.arange(data.shape[1])
+
+for i in range(3):
+    plt.bar(
+        X,
+        data[i],
+        bottom=np.sum(data[:i], axis=0),
+        color=color_list[i],
+        label=data_label[i]
+    )
+
+plt.legend()
+plt.show()
+```
+
+이 코드가 의미하는 것
+- `data`의 각 행이 하나의 그룹(`A`, `B`, `C`)입니다.
+- `X = np.arange(data.shape[1])`는 막대가 놓일 x축 위치 `0, 1, 2, 3`을 만듭니다.
+- `bottom=np.sum(data[:i], axis=0)`는 이전 그룹 값들의 합 위에 현재 막대를 쌓는 역할을 합니다.
+
+왜 필요한가
+- 단순 막대그래프는 각 값 비교에 좋고
+- 누적 막대그래프는 전체 합과 내부 구성 비율을 함께 보여 줄 수 있기 때문입니다.
+
+사용자가 준 코드에서 교정할 부분
+- `np. array`는 `np.array`
+- `data. shape[1]`는 `data.shape[1]`
+- `CX`는 `X`
+- `В`처럼 다른 문자셋이 섞이면 `B`로 고쳐야 함
+- `plt. legend()`는 `plt.legend()`
+- `plt.show()` 오타가 없도록 주의해야 함
+
+비슷한 개념의 다른 코드
+
+```python
+fig, ax = plt.subplots(figsize=(7, 4))
+
+bottom = np.zeros(data.shape[1])
+for i in range(data.shape[0]):
+    ax.bar(X, data[i], bottom=bottom, color=color_list[i], label=data_label[i])
+    bottom += data[i]
+
+ax.set_title('Stacked Bar Example')
+ax.set_xlabel('Category')
+ax.set_ylabel('Value')
+ax.legend()
+plt.show()
+```
+
+차이
+- `np.sum(data[:i], axis=0)` 방식은 매 반복마다 누적합을 다시 계산합니다.
+- `bottom += data[i]` 방식은 현재까지 누적값을 직접 업데이트합니다.
+
+둘 다 같은 개념이고, 후자는 반복 구조를 눈으로 이해하기 쉽다는 장점이 있습니다.
+
 #### `savefig()`
 
 그래프는 화면에 띄우는 것뿐 아니라 파일로 저장하는 경우도 많습니다.
@@ -677,6 +751,12 @@ jan_df.sort_values('ext price', ascending=False).head()
 올바른 방향
 - 결과물을 제출하거나 문서에 넣으려면 `savefig()`도 알아야 합니다.
 
+### 실수 18. 누적 막대그래프에서 `bottom` 없이 그냥 `bar()`만 반복 호출함
+
+올바른 방향
+- 막대를 쌓으려면 `bottom=`으로 아래 기준 높이를 지정해야 합니다.
+- `np.sum(data[:i], axis=0)` 또는 누적용 `bottom` 배열을 사용할 수 있습니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -695,6 +775,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `figsize`와 `fig.set_size_inches()` 차이
 - `ax.set_xlim()`, `ax.set_ylim()`의 역할
 - `scatter()`, `hist()`, `savefig()`의 목적
+- `bar()`와 누적 막대그래프의 `bottom` 의미
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`의 역할
 - `groupby()` 결과를 `matplotlib`으로 시각화하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
@@ -724,6 +805,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `subplots(2,2)`와 `ax.plot`을 쓰면 여러 그래프를 한 번에 정리할 수 있습니다.
 - `plt.plot(x, y, color=...)`는 가장 기본적인 선그래프 문법이고, `c=`는 색상 인자의 축약형입니다.
 - `fig.set_size_inches()`, `ax.set_xlim()`, `ax.set_ylim()`, `scatter()`, `hist()`, `savefig()`도 기본 시각화 범위에 포함됩니다.
+- `bar()`는 범주 비교에, `bottom=`을 쓴 누적 막대그래프는 전체와 구성 비율을 함께 볼 때 적합합니다.
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`는 판다스 기본 확인 함수입니다.
 - `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
 - 연결 후 `groupby()` 결과는 `matplotlib`으로 시각화하면 검증이 쉬워집니다.

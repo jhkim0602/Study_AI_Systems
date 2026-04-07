@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" style="background:#f7f9fb; font-family:sans-serif;">
+  <text x="450" y="38" fill="#233142" font-size="26" font-weight="bold" text-anchor="middle">누적 막대그래프(Stacked Bar) 구조 이해</text>
+
+  <g transform="translate(70,70)">
+    <text x="150" y="-12" fill="#1f78b4" font-size="18" font-weight="bold" text-anchor="middle">일반 막대그래프</text>
+    <line x1="20" y1="210" x2="280" y2="210" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="20" x2="20" y2="210" stroke="#475569" stroke-width="2"/>
+
+    <rect x="50" y="120" width="42" height="90" fill="#60a5fa"/>
+    <rect x="115" y="70" width="42" height="140" fill="#60a5fa"/>
+    <rect x="180" y="40" width="42" height="170" fill="#60a5fa"/>
+    <rect x="245" y="100" width="42" height="110" fill="#60a5fa"/>
+
+    <text x="71" y="230" fill="#334155" font-size="14" text-anchor="middle">C1</text>
+    <text x="136" y="230" fill="#334155" font-size="14" text-anchor="middle">C2</text>
+    <text x="201" y="230" fill="#334155" font-size="14" text-anchor="middle">C3</text>
+    <text x="266" y="230" fill="#334155" font-size="14" text-anchor="middle">C4</text>
+
+    <text x="150" y="265" fill="#64748b" font-size="14" text-anchor="middle">각 막대가 하나의 값만 직접 표현</text>
+  </g>
+
+  <g transform="translate(440,70)">
+    <text x="180" y="-12" fill="#ef4444" font-size="18" font-weight="bold" text-anchor="middle">누적 막대그래프</text>
+    <line x1="20" y1="210" x2="340" y2="210" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="20" x2="20" y2="210" stroke="#475569" stroke-width="2"/>
+
+    <!-- C1 -->
+    <rect x="45" y="178" width="45" height="32" fill="#3b82f6"/>
+    <rect x="45" y="152" width="45" height="26" fill="#22c55e"/>
+    <rect x="45" y="114" width="45" height="38" fill="#ef4444"/>
+    <text x="68" y="230" fill="#334155" font-size="14" text-anchor="middle">C1</text>
+
+    <!-- C2 -->
+    <rect x="120" y="120" width="45" height="90" fill="#3b82f6"/>
+    <rect x="120" y="66" width="45" height="54" fill="#22c55e"/>
+    <rect x="120" y="20" width="45" height="46" fill="#ef4444"/>
+    <text x="143" y="230" fill="#334155" font-size="14" text-anchor="middle">C2</text>
+
+    <!-- C3 -->
+    <rect x="195" y="60" width="45" height="150" fill="#3b82f6"/>
+    <rect x="195" y="24" width="45" height="36" fill="#22c55e"/>
+    <rect x="195" y="0" width="45" height="24" fill="#ef4444"/>
+    <text x="218" y="230" fill="#334155" font-size="14" text-anchor="middle">C3</text>
+
+    <!-- C4 -->
+    <rect x="270" y="138" width="45" height="72" fill="#3b82f6"/>
+    <rect x="270" y="108" width="45" height="30" fill="#22c55e"/>
+    <rect x="270" y="74" width="45" height="34" fill="#ef4444"/>
+    <text x="293" y="230" fill="#334155" font-size="14" text-anchor="middle">C4</text>
+
+    <rect x="240" y="246" width="14" height="14" fill="#3b82f6"/>
+    <text x="260" y="258" fill="#334155" font-size="13">A</text>
+    <rect x="285" y="246" width="14" height="14" fill="#22c55e"/>
+    <text x="305" y="258" fill="#334155" font-size="13">B</text>
+    <rect x="330" y="246" width="14" height="14" fill="#ef4444"/>
+    <text x="350" y="258" fill="#334155" font-size="13">C</text>
+
+    <path d="M 105 128 C 130 128, 145 128, 165 128" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="178" y="132" fill="#111827" font-size="12">bottom = 이전 누적합</text>
+
+    <text x="180" y="285" fill="#64748b" font-size="14" text-anchor="middle">전체 합과 내부 구성(A, B, C)을 함께 보여 줌</text>
+  </g>
+</svg>
