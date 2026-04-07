@@ -13,3 +13,11 @@
 ## Week 03
 - 실습 코드: [week03_NumPy.ipynb](./week03_NumPy.ipynb)
 - 학습 노트: [StudyNote/week03/Week03_Note.md](./StudyNote/week03/Week03_Note.md)
+
+## Week 04
+- 실습 코드: [week04_Vector_DotProduct.ipynb](./week04_Vector_DotProduct.ipynb)
+- 학습 노트: [StudyNote/week04/Week04_Note.md](./StudyNote/week04/Week04_Note.md)
+
+## Week 06
+- 실습 코드: [week06_Pandas_Merge_Concat.ipynb](./week06_Pandas_Merge_Concat.ipynb)
+- 학습 노트: [StudyNote/week06/Week06_Note.md](./StudyNote/week06/Week06_Note.md)

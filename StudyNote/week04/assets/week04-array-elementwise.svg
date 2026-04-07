@@ -1,0 +1,47 @@
+<svg width="860" height="320" viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">NumPy 배열 원소별 연산 시각화</title>
+  <desc id="desc">두 배열의 같은 위치 원소끼리 더하고 곱하는 과정을 보여준다.</desc>
+  <rect width="860" height="320" fill="#f8fafc"/>
+  <text x="40" y="42" font-size="26" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-weight="700" fill="#0f172a">배열 원소별 연산</text>
+  <text x="40" y="72" font-size="15" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" fill="#334155">NumPy 배열의 + 와 * 는 기본적으로 같은 위치의 원소끼리 계산된다.</text>
+
+  <text x="60" y="118" font-size="18" font-family="monospace" fill="#1e293b">arr_x = [1, 2, 3]</text>
+  <rect x="50" y="136" width="70" height="56" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <rect x="128" y="136" width="70" height="56" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <rect x="206" y="136" width="70" height="56" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="85" y="172" text-anchor="middle" font-size="24" font-family="monospace" fill="#1e3a8a">1</text>
+  <text x="163" y="172" text-anchor="middle" font-size="24" font-family="monospace" fill="#1e3a8a">2</text>
+  <text x="241" y="172" text-anchor="middle" font-size="24" font-family="monospace" fill="#1e3a8a">3</text>
+
+  <text x="60" y="228" font-size="18" font-family="monospace" fill="#1e293b">arr_y = [4, 5, 6]</text>
+  <rect x="50" y="244" width="70" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="128" y="244" width="70" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="206" y="244" width="70" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="85" y="280" text-anchor="middle" font-size="24" font-family="monospace" fill="#166534">4</text>
+  <text x="163" y="280" text-anchor="middle" font-size="24" font-family="monospace" fill="#166534">5</text>
+  <text x="241" y="280" text-anchor="middle" font-size="24" font-family="monospace" fill="#166534">6</text>
+
+  <line x1="332" y1="130" x2="332" y2="286" stroke="#94a3b8" stroke-width="2"/>
+
+  <text x="380" y="96" font-size="22" font-family="monospace" font-weight="700" fill="#0f172a">arr_x + arr_y</text>
+  <rect x="374" y="136" width="76" height="56" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <rect x="458" y="136" width="76" height="56" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <rect x="542" y="136" width="76" height="56" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="412" y="171" text-anchor="middle" font-size="22" font-family="monospace" fill="#92400e">5</text>
+  <text x="496" y="171" text-anchor="middle" font-size="22" font-family="monospace" fill="#92400e">7</text>
+  <text x="580" y="171" text-anchor="middle" font-size="22" font-family="monospace" fill="#92400e">9</text>
+  <text x="374" y="218" font-size="16" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" fill="#475569">1+4, 2+5, 3+6</text>
+
+  <text x="380" y="250" font-size="22" font-family="monospace" font-weight="700" fill="#0f172a">arr_x * arr_y</text>
+  <rect x="374" y="264" width="76" height="44" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <rect x="458" y="264" width="76" height="44" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <rect x="542" y="264" width="76" height="44" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="412" y="292" text-anchor="middle" font-size="20" font-family="monospace" fill="#991b1b">4</text>
+  <text x="496" y="292" text-anchor="middle" font-size="20" font-family="monospace" fill="#991b1b">10</text>
+  <text x="580" y="292" text-anchor="middle" font-size="20" font-family="monospace" fill="#991b1b">18</text>
+
+  <text x="680" y="124" font-size="18" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-weight="700" fill="#0f172a">핵심</text>
+  <text x="680" y="156" font-size="16" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" fill="#334155">• 같은 인덱스끼리 계산</text>
+  <text x="680" y="184" font-size="16" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" fill="#334155">• 벡터 내적의 출발점</text>
+  <text x="680" y="212" font-size="16" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" fill="#334155">• 곱한 뒤 모두 더하면 dot</text>
+</svg>
