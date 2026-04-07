@@ -138,6 +138,9 @@ print(matrix[:, :2])
 - 슬라이싱 끝 인덱스가 포함된다고 착각함
 - `matrix[row, col]` 순서를 헷갈림
 
+> **참고 시각 자료: 2차원 배열 인덱싱과 슬라이싱**
+> ![2차원 배열 슬라이싱](./assets/indexing_slicing_2d.svg)
+
 ### 4-5. `reshape`
 
 `reshape`는 원소 수를 유지한 채 배열 구조만 바꾸는 연산입니다.
@@ -176,6 +179,9 @@ print(np.std(arr))
 - `uniform`: 구간 내에서 비교적 고르게 분포
 - `normal`: 평균 주변에 모이는 정규분포
 - `sum`, `mean`, `max`, `min`, `std`: 배열 전체 특성 요약
+
+> **참고 시각 자료: 난수 분포 (Uniform vs Normal)**
+> ![난수 분포 시각화](./assets/random_distributions.svg)
 
 왜 필요한가
 - 데이터 분석은 보통 전체 데이터를 한눈에 요약하는 것부터 시작하기 때문입니다.

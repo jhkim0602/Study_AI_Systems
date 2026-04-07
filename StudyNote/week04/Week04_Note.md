@@ -66,6 +66,9 @@ print(np.sum(ops_matrix, axis=1))
 - `axis=0`: 열 기준
 - `axis=1`: 행 기준
 
+> **참고 시각 자료: NumPy Axis 방향성 이해**
+> ![Axis 0 vs 1](./assets/numpy_axis_0_vs_1.svg)
+
 왜 필요한가
 - 벡터와 행렬 계산은 데이터를 어떤 방향으로 보는지에 따라 해석이 달라지기 때문입니다.
 

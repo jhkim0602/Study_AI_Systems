@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" style="background:#2f3542; font-family:sans-serif;">
+  <text x="400" y="40" fill="#ffffff" font-size="24" font-weight="bold" text-anchor="middle">대혼란의 Axis (축) 개념 잡기</text>
+  
+  <g transform="translate(100, 80)">
+    <!-- axis=0 -->
+    <text x="120" y="-15" fill="#ff4757" font-size="20" font-weight="bold" text-anchor="middle">axis=0 (열 기준 / 행들이 모이는 방향)</text>
+    
+    <!-- Matrix 2x3 -->
+    <rect x="0" y="10" width="240" height="160" rx="8" fill="#57606f" stroke="#747d8c" stroke-width="2"/>
+    <rect x="20" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="95" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="170" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="20" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="95" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="170" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    
+    <!-- Arrow pointing down -->
+    <path d="M 45 40 L 45 140" stroke="#ff4757" stroke-width="8" marker-end="url(#arrow-down)"/>
+    <path d="M 120 40 L 120 140" stroke="#ff4757" stroke-width="8" marker-end="url(#arrow-down)"/>
+    <path d="M 195 40 L 195 140" stroke="#ff4757" stroke-width="8" marker-end="url(#arrow-down)"/>
+    <polygon points="40,140 50,140 45,150" fill="#ff4757"/>
+    <polygon points="115,140 125,140 120,150" fill="#ff4757"/>
+    <polygon points="190,140 200,140 195,150" fill="#ff4757"/>
+    
+    <!-- Result -->
+    <rect x="20" y="190" width="50" height="30" rx="4" fill="#ff4757"/>
+    <rect x="95" y="190" width="50" height="30" rx="4" fill="#ff4757"/>
+    <rect x="170" y="190" width="50" height="30" rx="4" fill="#ff4757"/>
+    
+    <text x="120" y="245" fill="#f1f2f6" font-size="14" text-anchor="middle">위아래 (수직) 방향으로 압축됨</text>
+  </g>
+
+  <g transform="translate(450, 80)">
+    <!-- axis=1 -->
+    <text x="120" y="-15" fill="#2ed573" font-size="20" font-weight="bold" text-anchor="middle">axis=1 (행 기준 / 열들이 모이는 방향)</text>
+    
+    <!-- Matrix 2x3 -->
+    <rect x="0" y="10" width="240" height="160" rx="8" fill="#57606f" stroke="#747d8c" stroke-width="2"/>
+    <rect x="20" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="95" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="170" y="30" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="20" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="95" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    <rect x="170" y="100" width="50" height="50" rx="4" fill="#ced6e0"/>
+    
+    <!-- Arrow pointing right -->
+    <path d="M 30 55 L 200 55" stroke="#2ed573" stroke-width="8"/>
+    <polygon points="200,45 200,65 210,55" fill="#2ed573"/>
+    
+    <path d="M 30 125 L 200 125" stroke="#2ed573" stroke-width="8"/>
+    <polygon points="200,115 200,135 210,125" fill="#2ed573"/>
+    
+    <!-- Result -->
+    <rect x="260" y="30" width="30" height="50" rx="4" fill="#2ed573"/>
+    <rect x="260" y="100" width="30" height="50" rx="4" fill="#2ed573"/>
+    
+    <text x="120" y="245" fill="#f1f2f6" font-size="14" text-anchor="middle">좌우 (수평) 방향으로 압축됨</text>
+  </g>
+</svg>
