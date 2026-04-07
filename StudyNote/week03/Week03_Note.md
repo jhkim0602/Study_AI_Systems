@@ -43,6 +43,8 @@ NumPy는 파이썬 수치 계산의 기본 도구입니다.
 
 배열은 여러 값을 한 번에 담고 계산하기 위한 구조입니다.
 
+![파이썬 리스트 vs 넘파이 배열](./assets/numpy_array_creation.png)
+
 ```python
 import numpy as np
 
@@ -84,6 +86,8 @@ range_arr = np.arange(1, 7)
 ### 4-3. 배열의 기본 속성
 
 배열을 만들고 나면 가장 먼저 구조를 봐야 합니다.
+
+![배열의 핵심 속성](./assets/numpy_array_properties.png)
 
 ```python
 matrix = range_arr.reshape(2, 3)
@@ -137,6 +141,8 @@ print(matrix[:, :2])
 ### 4-5. `reshape`
 
 `reshape`는 원소 수를 유지한 채 배열 구조만 바꾸는 연산입니다.
+
+![배열 모양 바꾸기](./assets/numpy_reshape.png)
 
 ```python
 reshaped_3x2 = range_arr.reshape(3, 2)

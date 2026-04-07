@@ -114,6 +114,9 @@ df_right = pd.DataFrame({
 - 같은 사람인지 판별하는 식별자
 - 값이 어긋나면 병합 결과도 어긋난다
 
+> **참고 시각 자료: 연결(Concat) vs 병합(Merge)**
+> ![Concat vs Merge](./assets/pandas_concat_merge.png)
+
 ### 4-4. `concat()`
 
 `concat()`은 표를 이어 붙이는 함수입니다.
@@ -157,6 +160,8 @@ customer_with_meta = pd.merge(
 - `merge()`는 "이어 붙이기"가 아니라 "키 기준 매칭"입니다.
 
 ### 4-6. 조인 종류
+
+![데이터베이스 및 판다스 병합(Join) 벤 다이어그램](./assets/pandas_join_types.png)
 
 #### `inner`
 

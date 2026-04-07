@@ -93,6 +93,8 @@ print(b.dot(c))
 
 내적 해석에서 가장 중요한 부분입니다.
 
+![벡터 내적 결과의 부호별 의미](./assets/vector_dot_product.png)
+
 #### 같은 방향
 
 ```python
