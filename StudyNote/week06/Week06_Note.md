@@ -52,6 +52,9 @@
 
 이번 실습에서는 `Pandas`가 중심이지만, 그래프를 그리기 전에 `NumPy` 함수들을 같이 다룹니다.
 
+> **참고 시각 자료: 기본 수학 함수**
+> ![NumPy 수학 함수](./assets/numpy_math_functions.svg)
+
 ```python
 x = np.linspace(-1, 1, 100)
 y_sin = np.sin(x)
@@ -265,6 +268,9 @@ pd.merge(df_left, df_right, on="subject_id", how="outer", indicator=True)
 
 `matplotlib`은 `Pandas`로 정리한 결과를 눈으로 빠르게 검증할 때 가장 기본이 되는 시각화 도구입니다.
 
+> **참고 시각 자료: Matplotlib 다중 그래프 구조**
+> ![Matplotlib Subplots](./assets/matplotlib_subplots.svg)
+
 이번 실습에서는 아래 흐름으로 사용하는 것이 자연스럽습니다.
 
 1. `read_excel()`로 월별 파일을 읽는다
@@ -350,6 +356,58 @@ plt.show()
 
 둘 다 맞는 문법이지만, 여러 축을 체계적으로 다루려면 보통 `subplots()`와 `ax.plot()`가 더 관리하기 쉽습니다.
 
+#### `plt.plot(x, y, color=...)`의 가장 기본 형태
+
+단일 선그래프를 빠르게 그릴 때는 `plt.plot()`을 가장 많이 사용합니다.
+
+사용자가 준 코드를 오타 없이 정리하면 아래처럼 쓸 수 있습니다.
+
+```python
+X_1 = range(100)
+Y_1 = [value for value in X_1]
+
+X_2 = range(100)
+Y_2 = [value + 100 for value in X_2]
+
+plt.plot(X_1, Y_1, color="#000000")
+plt.plot(X_2, Y_2, c="c")
+plt.show()
+```
+
+이 코드가 의미하는 것
+- 첫 번째 선은 `0`부터 `99`까지 증가하는 직선
+- 두 번째 선은 그 값에 `100`을 더한 평행한 직선
+- `color="#000000"`은 검정색
+- `c="c"`는 cyan 색상의 축약 표현
+
+왜 필요한가
+- `plt.plot()`의 가장 기본적인 입력 구조가 `x값`, `y값`이라는 점을 익히기 좋기 때문입니다.
+- `color=`와 `c=`가 같은 색상 지정 목적이라는 점을 비교하기 좋기 때문입니다.
+
+사용자가 준 코드에서 교정할 부분
+- `Y_1 = [value for value in x]`는 `x`가 아니라 `X_1`이어야 합니다
+- `Y_2 = [value + 100 for value in X]`는 `X`가 아니라 `X_2`여야 합니다
+- `plt. plot`처럼 중간 공백이 들어가면 안 됩니다
+- `X2`는 `X_2` 오타입니다
+- `plt.show()`가 맞습니다
+
+비슷한 개념의 다른 코드
+
+```python
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(X_1, Y_1, color='black', label='line 1')
+ax.plot(X_2, Y_2, color='cyan', linestyle='--', label='line 2')
+ax.set_title('Two Parallel Lines')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.legend()
+plt.show()
+```
+
+차이
+- `plt.plot()`는 빠르게 그릴 때 편함
+- `ax.plot()`는 제목, 축 이름, 범례처럼 축 단위 설정을 체계적으로 붙이기 좋음
+
 매출 데이터 예시
 
 ```python
@@ -374,6 +432,9 @@ plt.show()
 ### 4-10. `Pandas` 기본 확인 함수
 
 실제 실습에서는 `concat()`과 `merge()`만 쓰지 않습니다. 그 전에 `DataFrame` 상태를 빠르게 확인하는 기본 함수들이 매우 중요합니다.
+
+> **참고 시각 자료: 데이터 점검 함수**
+> ![Pandas 확인 함수](./assets/pandas_inspect_functions.svg)
 
 대표 함수
 - `head()`: 앞부분 5행 확인
@@ -496,6 +557,12 @@ jan_df.sort_values('ext price', ascending=False).head()
 - 단일 그래프는 `plt.plot()`으로도 충분하지만, 여러 축 구조에서는 `ax.plot()`가 더 안전합니다.
 - 어떤 축에 그리고 있는지 분명히 하고 싶다면 `ax.plot()`를 우선 떠올리면 됩니다.
 
+### 실수 13. `x`, `X`, `X_2`, `X2`처럼 비슷한 변수명을 섞어 씀
+
+올바른 방향
+- 시각화 예제에서는 변수명을 일관되게 써야 합니다.
+- 특히 리스트 컴프리헨션 안에서 다른 변수명을 참조하면 바로 오류가 납니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -509,6 +576,8 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `subplots(2,2)`, `ax.plot`의 의미
 - `subplot(321)`의 번호 체계
 - `subplot()`과 `subplots()` 차이
+- `plt.plot(x, y, color=...)`와 `ax.plot(...)` 차이
+- `color=`와 `c=`의 의미
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`의 역할
 - `groupby()` 결과를 `matplotlib`으로 시각화하는 흐름
 - `left_on`, `right_on`, `suffixes`, `indicator=True`의 목적
@@ -536,6 +605,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 - `np.linspace`, `sin`, `cos`, `tan`, `exp`는 그래프와 수치 함수 워밍업에 자주 쓰입니다.
 - `subplot(321)`는 `행-열-칸` 번호 체계이고, `subplots(2,2)`는 축 배열을 한 번에 만드는 방식입니다.
 - `subplots(2,2)`와 `ax.plot`을 쓰면 여러 그래프를 한 번에 정리할 수 있습니다.
+- `plt.plot(x, y, color=...)`는 가장 기본적인 선그래프 문법이고, `c=`는 색상 인자의 축약형입니다.
 - `head`, `info`, `describe`, `value_counts`, `sort_values`, `groupby`는 판다스 기본 확인 함수입니다.
 - `sales-jan`, `sales-feb`, `sales-mar`처럼 같은 구조의 월별 엑셀은 먼저 `concat()`으로 연결합니다.
 - 연결 후 `groupby()` 결과는 `matplotlib`으로 시각화하면 검증이 쉬워집니다.

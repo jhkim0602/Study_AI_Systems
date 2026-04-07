@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" style="background:#ffffff; font-family:sans-serif;">
+  <text x="400" y="35" fill="#1e272e" font-size="24" font-weight="bold" text-anchor="middle">Pandas 시동 걸기: 기본 확인 함수</text>
+  <text x="400" y="60" fill="#808e9b" font-size="14" text-anchor="middle">DataFrame을 로드하고 가장 먼저 실행해야 할 함수들</text>
+
+  <g transform="translate(50, 90)">
+    <rect x="0" y="0" width="250" height="220" rx="6" fill="#f1f2f6" stroke="#d2dae2" stroke-width="2"/>
+    <rect x="0" y="0" width="250" height="30" fill="#0fbcf9" rx="6"/>
+    <text x="20" y="20" fill="#fff" font-size="14" font-weight="bold">ID</text>
+    <text x="70" y="20" fill="#fff" font-size="14" font-weight="bold">Name</text>
+    <text x="140" y="20" fill="#fff" font-size="14" font-weight="bold">Score</text>
+    <text x="200" y="20" fill="#fff" font-size="14" font-weight="bold">Grade</text>
+    
+    <path d="M 0 60 L 250 60 M 0 90 L 250 90 M 0 120 L 250 120 M 0 150 L 250 150 M 0 180 L 250 180" stroke="#d2dae2" stroke-width="1"/>
+    
+    <rect x="-5" y="-5" width="260" height="155" fill="none" stroke="#ff3f34" stroke-width="3" stroke-dasharray="5"/>
+    <text x="-15" y="100" fill="#ff3f34" font-size="18" font-weight="bold" transform="rotate(-90 -15 100)">df.head()</text>
+  </g>
+  
+  <g transform="translate(380, 90)">
+    <rect x="0" y="0" width="380" height="60" rx="8" fill="#eccc68" fill-opacity="0.2"/>
+    <text x="20" y="25" fill="#ffa801" font-size="18" font-weight="bold">df.info()</text>
+    <text x="20" y="45" fill="#485460" font-size="14">행/열 수, 자료형(dtype), 결측치 유무 확인</text>
+    
+    <rect x="0" y="70" width="380" height="60" rx="8" fill="#00d8d6" fill-opacity="0.2"/>
+    <text x="20" y="95" fill="#0fbcf9" font-size="18" font-weight="bold">df.describe()</text>
+    <text x="20" y="115" fill="#485460" font-size="14">평균, 최소/최대 등 수치형 속성 통계 확인</text>
+    
+    <rect x="0" y="140" width="380" height="60" rx="8" fill="#ffdd59" fill-opacity="0.2"/>
+    <text x="20" y="165" fill="#ff5e57" font-size="18" font-weight="bold">df.value_counts()</text>
+    <text x="20" y="185" fill="#485460" font-size="14">범주형 열(예: Grade)의 각 항목별 빈도 비교</text>
+
+    <rect x="0" y="210" width="380" height="60" rx="8" fill="#a29bfe" fill-opacity="0.2"/>
+    <text x="20" y="235" fill="#6c5ce7" font-size="18" font-weight="bold">df.groupby()</text>
+    <text x="20" y="255" fill="#485460" font-size="14">특정 기준에 따라 묶어서(groupby) 집계 계산</text>
+
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" style="background:#f4f7f6; font-family:sans-serif;">
+  <text x="400" y="40" fill="#2c3e50" font-size="24" font-weight="bold" text-anchor="middle">Matplotlib 다중 그래프 구조 이해</text>
+  
+  <g transform="translate(100, 70)">
+    <!-- subplots(2,2)-->
+    <text x="140" y="0" fill="#2980b9" font-size="18" font-weight="bold" text-anchor="middle">fig, axes = plt.subplots(2, 2)</text>
+    <rect x="0" y="15" width="280" height="230" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="140" y="265" fill="#7f8c8d" font-size="14" text-anchor="middle">전체 창 (Figure = fig)</text>
+    
+    <rect x="15" y="30" width="120" height="95" rx="5" fill="#fff" stroke="#3498db" stroke-width="2"/>
+    <text x="75" y="80" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">axes[0,0]</text>
+    
+    <rect x="145" y="30" width="120" height="95" rx="5" fill="#fff" stroke="#3498db" stroke-width="2"/>
+    <text x="205" y="80" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">axes[0,1]</text>
+    
+    <rect x="15" y="135" width="120" height="95" rx="5" fill="#fff" stroke="#3498db" stroke-width="2"/>
+    <text x="75" y="185" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">axes[1,0]</text>
+    
+    <rect x="145" y="135" width="120" height="95" rx="5" fill="#fff" stroke="#3498db" stroke-width="2"/>
+    <text x="205" y="185" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">axes[1,1]</text>
+  </g>
+  
+  <g transform="translate(450, 70)">
+    <!-- subplot(321)-->
+    <text x="120" y="0" fill="#2980b9" font-size="18" font-weight="bold" text-anchor="middle">plt.subplot(321) 표기법</text>
+    <rect x="0" y="15" width="240" height="230" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    
+    <rect x="15" y="30" width="100" height="55" rx="4" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+    <text x="65" y="62" fill="#ecf0f1" font-size="14" font-weight="bold" text-anchor="middle">321 (1칸)</text>
+    
+    <rect x="125" y="30" width="100" height="55" rx="4" fill="#fff" stroke="#95a5a6" stroke-dasharray="4"/>
+    <text x="175" y="62" fill="#95a5a6" font-size="14" font-weight="bold" text-anchor="middle">322 (2칸)</text>
+    
+    <rect x="15" y="95" width="100" height="55" rx="4" fill="#fff" stroke="#95a5a6" stroke-dasharray="4"/>
+    <text x="65" y="127" fill="#95a5a6" font-size="14" font-weight="bold" text-anchor="middle">323 (3칸)</text>
+    
+    <rect x="125" y="95" width="100" height="55" rx="4" fill="#fff" stroke="#95a5a6" stroke-dasharray="4"/>
+    <text x="175" y="127" fill="#95a5a6" font-size="14" font-weight="bold" text-anchor="middle">324 (4칸)</text>
+    
+    <rect x="15" y="160" width="100" height="55" rx="4" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+    <text x="65" y="192" fill="#ecf0f1" font-size="14" font-weight="bold" text-anchor="middle">325 (5칸)</text>
+
+    <rect x="125" y="160" width="100" height="55" rx="4" fill="#fff" stroke="#95a5a6" stroke-dasharray="4"/>
+    <text x="175" y="192" fill="#95a5a6" font-size="14" font-weight="bold" text-anchor="middle">326 (6칸)</text>
+    
+    <text x="120" y="275" fill="#34495e" font-size="14" text-anchor="middle">3행 2열 구조에서 순서대로 숫자가 매겨집니다.</text>
+  </g>
+</svg>
