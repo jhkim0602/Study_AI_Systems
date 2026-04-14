@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" style="background:#f8fafc; font-family:sans-serif;">
+  <text x="450" y="36" text-anchor="middle" font-size="26" font-weight="bold" fill="#1e293b">히스토그램의 기본 구조</text>
+
+  <g transform="translate(70,80)">
+    <text x="150" y="-14" text-anchor="middle" font-size="18" font-weight="bold" fill="#2563eb">원본 데이터</text>
+    <line x1="20" y1="140" x2="280" y2="140" stroke="#475569" stroke-width="2"/>
+    <circle cx="40" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="62" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="84" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="120" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="146" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="172" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="182" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="206" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="240" cy="140" r="6" fill="#0ea5e9"/>
+    <circle cx="255" cy="140" r="6" fill="#0ea5e9"/>
+    <text x="150" y="180" text-anchor="middle" font-size="14" fill="#64748b">숫자 데이터가 여러 위치에 흩어져 있음</text>
+  </g>
+
+  <g transform="translate(340,80)">
+    <text x="120" y="-14" text-anchor="middle" font-size="18" font-weight="bold" fill="#7c3aed">구간(bin) 나누기</text>
+    <rect x="0" y="20" width="60" height="120" fill="#e2e8f0" stroke="#94a3b8"/>
+    <rect x="60" y="20" width="60" height="120" fill="#eef2ff" stroke="#94a3b8"/>
+    <rect x="120" y="20" width="60" height="120" fill="#e2e8f0" stroke="#94a3b8"/>
+    <rect x="180" y="20" width="60" height="120" fill="#eef2ff" stroke="#94a3b8"/>
+    <text x="30" y="160" text-anchor="middle" font-size="13" fill="#334155">bin 1</text>
+    <text x="90" y="160" text-anchor="middle" font-size="13" fill="#334155">bin 2</text>
+    <text x="150" y="160" text-anchor="middle" font-size="13" fill="#334155">bin 3</text>
+    <text x="210" y="160" text-anchor="middle" font-size="13" fill="#334155">bin 4</text>
+    <text x="120" y="190" text-anchor="middle" font-size="14" fill="#64748b">값을 구간별로 분류</text>
+  </g>
+
+  <g transform="translate(620,60)">
+    <text x="140" y="6" text-anchor="middle" font-size="18" font-weight="bold" fill="#dc2626">히스토그램 결과</text>
+    <line x1="20" y1="180" x2="280" y2="180" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="20" x2="20" y2="180" stroke="#475569" stroke-width="2"/>
+    <rect x="40" y="120" width="42" height="60" fill="#60a5fa"/>
+    <rect x="92" y="60" width="42" height="120" fill="#60a5fa"/>
+    <rect x="144" y="84" width="42" height="96" fill="#60a5fa"/>
+    <rect x="196" y="132" width="42" height="48" fill="#60a5fa"/>
+    <text x="61" y="198" text-anchor="middle" font-size="13" fill="#334155">bin 1</text>
+    <text x="113" y="198" text-anchor="middle" font-size="13" fill="#334155">bin 2</text>
+    <text x="165" y="198" text-anchor="middle" font-size="13" fill="#334155">bin 3</text>
+    <text x="217" y="198" text-anchor="middle" font-size="13" fill="#334155">bin 4</text>
+    <text x="140" y="232" text-anchor="middle" font-size="14" fill="#64748b">구간별 빈도를 막대 높이로 표현</text>
+  </g>
+</svg>
