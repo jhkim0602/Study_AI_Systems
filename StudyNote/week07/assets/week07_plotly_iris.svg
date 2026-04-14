@@ -1,0 +1,36 @@
+<svg width="920" height="360" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="360" fill="#fffdfb"/>
+  <text x="460" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#111827">Plotly Express with the Iris Dataset</text>
+
+  <rect x="60" y="84" width="220" height="190" rx="18" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/>
+  <text x="170" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#374151">iris</text>
+  <text x="170" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">sepal_length</text>
+  <text x="170" y="176" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">sepal_width</text>
+  <text x="170" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">petal_length</text>
+  <text x="170" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">petal_width</text>
+  <text x="170" y="248" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">species</text>
+
+  <line x1="310" y1="178" x2="380" y2="178" stroke="#4b5563" stroke-width="4"/>
+  <polygon points="380,178 368,171 368,185" fill="#4b5563"/>
+
+  <rect x="420" y="70" width="440" height="220" rx="18" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="640" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1d4ed8">Plotly Express</text>
+
+  <rect x="450" y="128" width="180" height="58" rx="12" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="540" y="154" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d4ed8">px.scatter()</text>
+  <text x="540" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">relationship + hover</text>
+
+  <rect x="650" y="128" width="180" height="58" rx="12" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="740" y="154" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d4ed8">px.histogram()</text>
+  <text x="740" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">interactive distribution</text>
+
+  <rect x="450" y="204" width="180" height="58" rx="12" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="540" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d4ed8">px.box()</text>
+  <text x="540" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">median + outliers</text>
+
+  <rect x="650" y="204" width="180" height="58" rx="12" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="740" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d4ed8">px.line()</text>
+  <text x="740" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#374151">interactive trend</text>
+
+  <text x="640" y="324" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#475569">Use Plotly when you want hover, zoom, legend toggle, and web-friendly interaction.</text>
+</svg>

@@ -4,7 +4,7 @@
 사람 비유로 보면 훨씬 직관적입니다.
 
 연결 실습
-- [../../../../week04_Vector_DotProduct.ipynb](../../../../week04_Vector_DotProduct.ipynb)
+- [../week04_Vector_DotProduct.ipynb](../week04_Vector_DotProduct.ipynb)
 
 ![사람 비유 시각화](../assets/week04-dot-human-analogy.svg)
 

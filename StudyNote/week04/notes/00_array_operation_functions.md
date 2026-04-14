@@ -3,8 +3,8 @@
 이 문서는 4주차 내적 학습에 들어가기 전에, NumPy에서 자주 쓰는 대표 연산 함수와 `axis` 개념을 정리합니다. 내적도 결국 배열 원소를 곱하고 더하는 계산이므로, 배열 연산을 먼저 익혀 두면 뒤 내용이 훨씬 자연스럽습니다.
 
 연결 실습
-- [../../../../week04_Vector_DotProduct.ipynb](../../../../week04_Vector_DotProduct.ipynb)
-- 복습 링크: [Week03 배열 속성 노트](../../../week03/notes/01_array_creation_and_properties.md)
+- [../week04_Vector_DotProduct.ipynb](../week04_Vector_DotProduct.ipynb)
+- 복습 링크: [Week03 배열 속성 노트](../../week03/notes/01_array_creation_and_properties.md)
 
 ## 1. 대표 함수
 

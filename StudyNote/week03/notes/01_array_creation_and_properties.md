@@ -3,7 +3,7 @@
 이 문서는 3주차 실습 코드 중 배열 생성과 배열 속성 확인 부분을 정리합니다.
 
 연결 실습
-- [../../../../week03_NumPy.ipynb](../../../../week03_NumPy.ipynb)
+- [../week03_NumPy.ipynb](../week03_NumPy.ipynb)
 
 ## 1. `np.array()`로 배열 만들기
 

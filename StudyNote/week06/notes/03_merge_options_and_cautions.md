@@ -3,7 +3,7 @@
 병합은 기본 문법만 알아도 시작할 수 있지만, 실제로는 몇 가지 옵션을 함께 알아야 훨씬 덜 헷갈립니다.
 
 연결 실습
-- [../../../../week06_Pandas_Merge_Concat.ipynb](../../../../week06_Pandas_Merge_Concat.ipynb)
+- [../week06_Pandas_Merge_Concat.ipynb](../week06_Pandas_Merge_Concat.ipynb)
 
 ## 1. 열 이름이 다를 때
 

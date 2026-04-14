@@ -3,7 +3,7 @@
 이 문서는 내적의 부호가 왜 중요한지 설명합니다.
 
 연결 실습
-- [../../../../week04_Vector_DotProduct.ipynb](../../../../week04_Vector_DotProduct.ipynb)
+- [../week04_Vector_DotProduct.ipynb](../week04_Vector_DotProduct.ipynb)
 
 ![방향과 부호 시각화](../assets/week04-dot-sign-cases.svg)
 

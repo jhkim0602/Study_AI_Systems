@@ -34,7 +34,7 @@ NumPy는 파이썬 수치 계산의 기본 도구입니다.
 - 숫자형 데이터와 문자열 구분
 
 연결 포인트
-- 실습 코드: [../../week03_NumPy.ipynb](../../week03_NumPy.ipynb)
+- 실습 코드: [./week03_NumPy.ipynb](./week03_NumPy.ipynb)
 - 다음 주차 연결: [../week04/Week04_Note.md](../week04/Week04_Note.md)
 
 ## 4. 핵심 개념과 용어 해설
@@ -227,7 +227,7 @@ print(np.linalg.norm(vector_a))
 ## 5. 실습 파일과 핵심 흐름
 
 관련 실습
-- [../../week03_NumPy.ipynb](../../week03_NumPy.ipynb)
+- [./week03_NumPy.ipynb](./week03_NumPy.ipynb)
 
 추천 실습 순서
 1. `np.array()`와 기본 생성 함수로 배열 만들기
@@ -286,7 +286,7 @@ print(np.linalg.norm(vector_a))
 
 ## 8. 기존 문서와 연결 포인트
 
-- 실습 코드: [../../week03_NumPy.ipynb](../../week03_NumPy.ipynb)
+- 실습 코드: [./week03_NumPy.ipynb](./week03_NumPy.ipynb)
 - 보충 문서: [notes/01_array_creation_and_properties.md](./notes/01_array_creation_and_properties.md)
 - 보충 문서: [notes/02_indexing_slicing_and_reshape.md](./notes/02_indexing_slicing_and_reshape.md)
 - 보충 문서: [notes/03_random_stats_and_performance.md](./notes/03_random_stats_and_performance.md)

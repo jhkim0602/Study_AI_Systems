@@ -3,7 +3,7 @@
 이 문서는 6주차 실습 코드를 어떤 순서로 보면 좋은지 빠르게 정리합니다.
 
 연결 실습
-- [../../../../week06_Pandas_Merge_Concat.ipynb](../../../../week06_Pandas_Merge_Concat.ipynb)
+- [../week06_Pandas_Merge_Concat.ipynb](../week06_Pandas_Merge_Concat.ipynb)
 
 ## 1. 첫 단계: 표 직접 만들기
 

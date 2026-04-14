@@ -33,7 +33,7 @@
 
 연결 포인트
 - 이전 주차: [../week03/Week03_Note.md](../week03/Week03_Note.md)
-- 실습 코드: [../../week04_Vector_DotProduct.ipynb](../../week04_Vector_DotProduct.ipynb)
+- 실습 코드: [./week04_Vector_DotProduct.ipynb](./week04_Vector_DotProduct.ipynb)
 
 ## 4. 핵심 개념과 용어 해설
 
@@ -182,7 +182,7 @@ print(np.linalg.norm(a))
 ## 5. 실습 파일과 핵심 흐름
 
 관련 실습
-- [../../week04_Vector_DotProduct.ipynb](../../week04_Vector_DotProduct.ipynb)
+- [./week04_Vector_DotProduct.ipynb](./week04_Vector_DotProduct.ipynb)
 
 추천 실습 순서
 1. 배열 연산과 `axis` 확인
@@ -236,7 +236,7 @@ print(np.linalg.norm(a))
 
 ## 8. 기존 문서와 연결 포인트
 
-- 실습 코드: [../../week04_Vector_DotProduct.ipynb](../../week04_Vector_DotProduct.ipynb)
+- 실습 코드: [./week04_Vector_DotProduct.ipynb](./week04_Vector_DotProduct.ipynb)
 - 보충 문서: [notes/00_array_operation_functions.md](./notes/00_array_operation_functions.md)
 - 보충 문서: [notes/01_dot_product_calculation.md](./notes/01_dot_product_calculation.md)
 - 보충 문서: [notes/02_dot_product_direction_and_sign.md](./notes/02_dot_product_direction_and_sign.md)

@@ -3,7 +3,7 @@
 이 문서는 병합과 연결을 배우기 전에, 실습에 자주 등장하는 `DataFrame` 생성 방식과 키 열의 의미를 먼저 정리합니다.
 
 연결 실습
-- [../../../../week06_Pandas_Merge_Concat.ipynb](../../../../week06_Pandas_Merge_Concat.ipynb)
+- [../week06_Pandas_Merge_Concat.ipynb](../week06_Pandas_Merge_Concat.ipynb)
 
 ## 1. 수업에서 자주 보는 생성 방식
 

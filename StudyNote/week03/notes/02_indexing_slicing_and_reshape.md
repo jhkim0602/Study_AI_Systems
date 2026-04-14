@@ -3,7 +3,7 @@
 이 문서는 1차원/2차원 배열 선택과 배열 모양 변경을 정리합니다.
 
 연결 실습
-- [../../../../week03_NumPy.ipynb](../../../../week03_NumPy.ipynb)
+- [../week03_NumPy.ipynb](../week03_NumPy.ipynb)
 
 ## 1. 1차원 배열 인덱싱과 슬라이싱
 

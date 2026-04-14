@@ -4,7 +4,7 @@
 공통 열을 기준으로 두 표를 맞춰 붙입니다.
 
 연결 실습
-- [../../../../week06_Pandas_Merge_Concat.ipynb](../../../../week06_Pandas_Merge_Concat.ipynb)
+- [../week06_Pandas_Merge_Concat.ipynb](../week06_Pandas_Merge_Concat.ipynb)
 
 ## 1. 기본 형태
 

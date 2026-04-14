@@ -39,7 +39,7 @@
 - 결측치 `NaN` 의미
 
 연결 포인트
-- 실습 코드: [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- 실습 코드: [./week06_Pandas_Merge_Concat.ipynb](./week06_Pandas_Merge_Concat.ipynb)
 - 실습 데이터: [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
 - 실습 데이터: [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
 - 실습 데이터: [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)
@@ -623,7 +623,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 ## 5. 실습 파일과 핵심 흐름
 
 관련 실습
-- [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- [./week06_Pandas_Merge_Concat.ipynb](./week06_Pandas_Merge_Concat.ipynb)
 - [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
 - [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
 - [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)
@@ -787,7 +787,7 @@ jan_df.sort_values('ext price', ascending=False).head()
 
 ## 8. 기존 문서와 연결 포인트
 
-- 실습 코드: [../../week06_Pandas_Merge_Concat.ipynb](../../week06_Pandas_Merge_Concat.ipynb)
+- 실습 코드: [./week06_Pandas_Merge_Concat.ipynb](./week06_Pandas_Merge_Concat.ipynb)
 - 실습 데이터: [data/sales-jan-2014.xlsx](./data/sales-jan-2014.xlsx)
 - 실습 데이터: [data/sales-feb-2014.xlsx](./data/sales-feb-2014.xlsx)
 - 실습 데이터: [data/sales-mar-2014.xlsx](./data/sales-mar-2014.xlsx)

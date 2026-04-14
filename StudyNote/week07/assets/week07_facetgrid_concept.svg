@@ -1,0 +1,43 @@
+<svg width="920" height="360" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="360" fill="#fffdf9"/>
+  <text x="460" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#111827">FacetGrid: One Plot, Many Panels</text>
+
+  <rect x="80" y="92" width="240" height="190" rx="18" fill="#f3f4f6" stroke="#9ca3af" stroke-width="2"/>
+  <text x="200" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#374151">Single Plot</text>
+  <circle cx="130" cy="240" r="6" fill="#2563eb"/>
+  <circle cx="155" cy="215" r="6" fill="#2563eb"/>
+  <circle cx="180" cy="205" r="6" fill="#2563eb"/>
+  <circle cx="220" cy="185" r="6" fill="#dc2626"/>
+  <circle cx="245" cy="160" r="6" fill="#dc2626"/>
+  <circle cx="270" cy="148" r="6" fill="#dc2626"/>
+  <line x1="115" y1="255" x2="290" y2="140" stroke="#d1d5db" stroke-width="3" stroke-dasharray="6 5"/>
+  <text x="200" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#6b7280">Many groups mixed together</text>
+
+  <line x1="350" y1="188" x2="420" y2="188" stroke="#4b5563" stroke-width="4"/>
+  <polygon points="420,188 408,181 408,195" fill="#4b5563"/>
+
+  <rect x="460" y="74" width="350" height="226" rx="18" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="635" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#4338ca">FacetGrid Panels</text>
+
+  <rect x="490" y="124" width="130" height="72" rx="10" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="555" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4338ca">group = A</text>
+  <circle cx="520" cy="178" r="5" fill="#2563eb"/>
+  <circle cx="548" cy="162" r="5" fill="#2563eb"/>
+  <circle cx="575" cy="150" r="5" fill="#2563eb"/>
+
+  <rect x="650" y="124" width="130" height="72" rx="10" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="715" y="144" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4338ca">group = B</text>
+  <circle cx="680" cy="180" r="5" fill="#dc2626"/>
+  <circle cx="708" cy="162" r="5" fill="#dc2626"/>
+  <circle cx="735" cy="145" r="5" fill="#dc2626"/>
+
+  <rect x="490" y="212" width="130" height="72" rx="10" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="555" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4338ca">row = north</text>
+  <text x="555" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">same plot type</text>
+
+  <rect x="650" y="212" width="130" height="72" rx="10" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="715" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4338ca">row = south</text>
+  <text x="715" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">different subset</text>
+
+  <text x="635" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#4b5563">Use panels when one chart becomes too crowded.</text>
+</svg>

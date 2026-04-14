@@ -3,7 +3,7 @@
 이 문서는 난수 생성, 집계 함수, 메모리 비교, 속도 비교를 정리합니다.
 
 연결 실습
-- [../../../../week03_NumPy.ipynb](../../../../week03_NumPy.ipynb)
+- [../week03_NumPy.ipynb](../week03_NumPy.ipynb)
 
 ## 1. 균등분포 난수
 

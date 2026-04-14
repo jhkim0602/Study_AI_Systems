@@ -3,7 +3,7 @@
 이 문서는 NumPy 배열을 벡터처럼 다루는 방법과 고급 연산을 정리합니다.
 
 연결 실습
-- [../../../../week03_NumPy.ipynb](../../../../week03_NumPy.ipynb)
+- [../week03_NumPy.ipynb](../week03_NumPy.ipynb)
 
 ## 1. 고급 연산
 

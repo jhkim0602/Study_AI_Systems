@@ -1,4 +1,4 @@
-# Week 07 Note: Matplotlib 히스토그램과 Seaborn 기초
+# Week 07 Note: Matplotlib 히스토그램, Seaborn, Plotly
 
 ## 1. 이 주제의 목적
 
@@ -16,6 +16,8 @@
 - 숫자 데이터가 어떤 구간에 몰려 있는지 어떻게 보는가
 - 시간에 따라 값이 어떻게 변하는지 어떻게 보는가
 - 두 수치형 변수 사이의 관계는 어떤 그래프로 보는가
+- 같은 그래프를 그룹별로 나누어 여러 패널로 보는 방법은 무엇인가
+- 같은 데이터를 상호작용 가능한 그래프로 보는 방법은 무엇인가
 - `matplotlib`와 `seaborn`은 어떤 관계인가
 
 ## 2. 왜 중요한가
@@ -46,7 +48,7 @@
 연결 포인트
 - 배열과 난수 기초: [../week03/Week03_Note.md](../week03/Week03_Note.md)
 - `Pandas`와 `matplotlib` 기본 복습: [../week06/Week06_Note.md](../week06/Week06_Note.md)
-- 실습 코드: [../../week07_Matplotlib_Seaborn.ipynb](../../week07_Matplotlib_Seaborn.ipynb)
+- 실습 코드: [./week07_Matplotlib_Seaborn.ipynb](./week07_Matplotlib_Seaborn.ipynb)
 - 실습 데이터: [data/fmri.csv](./data/fmri.csv)
 
 ## 4. 핵심 개념과 용어 해설
@@ -302,7 +304,7 @@ sns.set_theme(style="whitegrid")
 실행 재현성을 위해 로컬 CSV로 함께 둡니다.
 
 ```python
-fmri = pd.read_csv("StudyNote/week07/data/fmri.csv")
+fmri = pd.read_csv("data/fmri.csv")
 fmri.head()
 ```
 
@@ -435,20 +437,291 @@ sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
 - `style`: 모양
 - `size`: 크기
 
-### 4-15. 언제 어떤 그래프를 쓰는가
+### 4-15. `FacetGrid`란 무엇인가
+
+앞에서는 한 그래프 안에서 `hue`, `style`, `size`로 정보를 겹쳐 표현했습니다.  
+하지만 그룹이 많아지면 한 화면에 다 겹쳐 그리는 방식이 오히려 읽기 어려워질 수 있습니다.
+
+이럴 때 쓰는 것이 `FacetGrid`입니다.
+
+`FacetGrid`는 같은 종류의 그래프를 여러 작은 패널로 나누어 보여 주는 구조입니다.  
+즉, "그래프 자체는 같고 데이터 부분집합만 달라지는" 경우에 적합합니다.
+
+쉽게 말하면
+- 색으로 한 화면에서 겹쳐 볼 수도 있고
+- 패널을 나누어 따로 볼 수도 있습니다
+
+`FacetGrid`는 두 번째 방식입니다.
+
+> **참고 시각 자료: FacetGrid의 기본 구조**
+> ![FacetGrid Concept](./assets/week07_facetgrid_concept.svg)
+
+핵심 옵션
+- `row`: 행 방향으로 패널 분할
+- `col`: 열 방향으로 패널 분할
+- `hue`: 각 패널 안에서 색상 구분
+- `col_wrap`: 열 개수를 제한하며 줄바꿈
+
+왜 필요한가
+- 한 그래프에 너무 많은 그룹을 겹치면 복잡해지기 때문입니다.
+- 그룹별 패턴을 독립적으로 비교하기 좋기 때문입니다.
+
+### 4-16. `sns.FacetGrid()`
+
+가장 기본적인 사용 예시는 아래와 같습니다.
+
+```python
+g = sns.FacetGrid(df_study, col="group", hue="passed", height=4)
+g.map_dataframe(sns.scatterplot, x="study_hours", y="score")
+g.add_legend()
+```
+
+이 코드가 의미하는 것
+- `col="group"`: 그룹별로 열 패널을 나눔
+- `hue="passed"`: 각 패널 안에서 합격 여부를 색으로 구분
+- `map_dataframe(...)`: 각 패널에 같은 그래프 함수를 적용
+
+`fmri` 같은 시계열 데이터에서는 아래처럼도 자주 씁니다.
+
+```python
+g = sns.FacetGrid(fmri, row="region", col="event", height=3, margin_titles=True)
+g.map_dataframe(sns.lineplot, x="timepoint", y="signal")
+```
+
+기억할 것
+- `FacetGrid`는 조금 더 직접 제어하는 방식입니다.
+- 대신 구조를 이해하면 복잡한 그룹 비교를 깔끔하게 나눌 수 있습니다.
+
+자주 같이 쓰는 메서드
+- `g.add_legend()`
+- `g.set_axis_labels()`
+- `g.set_titles()`
+
+### 4-17. `relplot()`, `displot()`, `catplot()`, `pairplot()`
+
+`FacetGrid`를 직접 쓰는 방법도 중요하지만, 실제로는 더 편한 figure-level 함수들을 자주 씁니다.
+
+#### `relplot()`
+
+```python
+sns.relplot(
+    data=df_study,
+    x="study_hours",
+    y="score",
+    hue="passed",
+    col="group",
+    kind="scatter"
+)
+```
+
+의미
+- 관계형 그래프를 쉽게 그리는 함수입니다.
+- `kind="scatter"` 또는 `kind="line"`을 자주 씁니다.
+
+왜 필요한가
+- `FacetGrid`를 직접 짜지 않아도, 관계형 그래프 + 패널 분할을 빠르게 만들 수 있기 때문입니다.
+
+#### `displot()`
+
+```python
+sns.displot(data=df_scores, x="score", col="group", kind="hist", bins=12)
+```
+
+의미
+- 분포용 figure-level 함수입니다.
+- `hist`, `kde`, `ecdf` 같은 분포 표현을 패널과 함께 다루기 좋습니다.
+
+#### `catplot()`
+
+```python
+sns.catplot(data=df_study, x="group", hue="passed", kind="count")
+```
+
+의미
+- 범주형 데이터용 figure-level 함수입니다.
+- `bar`, `count`, `box`, `violin` 등 범주형 그래프를 묶어서 다룹니다.
+
+#### `pairplot()`
+
+```python
+sns.pairplot(df_study[["study_hours", "sleep_hours", "score", "group"]], hue="group")
+```
+
+의미
+- 여러 수치형 변수 쌍을 한 번에 비교합니다.
+
+정확히 말하면
+- `relplot`, `displot`, `catplot`은 `FacetGrid` 계열의 figure-level 함수입니다.
+- `pairplot`은 `PairGrid` 기반이지만, "여러 패널을 한 번에 비교한다"는 사고 흐름에서 같이 기억하는 편이 좋습니다.
+
+> **참고 시각 자료: figure-level 함수들의 관계**
+> ![Seaborn Figure Level](./assets/week07_figure_level_functions.svg)
+
+### 4-18. `Plotly`는 무엇인가
+
+`Plotly`는 상호작용형(interactive) 그래프를 만들기 좋은 시각화 라이브러리입니다.
+
+`matplotlib`와 `seaborn`이 정적인 보고서용 그래프에 강하다면, `Plotly`는 아래 같은 점에서 강점이 있습니다.
+
+- 마우스로 확대/축소 가능
+- hover 정보 확인 가능
+- 범례를 클릭해 특정 그룹만 보기 가능
+- 웹 대시보드나 발표 자료에 붙이기 좋음
+
+즉, 같은 데이터라도
+- 수업 노트 정리와 시험 설명에는 `matplotlib`, `seaborn`
+- 상호작용 탐색과 웹 시각화에는 `Plotly`
+
+라는 구분으로 이해하면 좋습니다.
+
+> **참고 시각 자료: Plotly와 iris 예제 흐름**
+> ![Plotly Iris](./assets/week07_plotly_iris.svg)
+
+### 4-19. `plotly.express as px`
+
+`Plotly` 입문에서는 보통 `plotly.express`를 먼저 사용합니다.
+
+```python
+import plotly.express as px
+```
+
+왜 필요한가
+- 간단한 문법으로 시각적으로 완성도 높은 그래프를 만들 수 있기 때문입니다.
+- `DataFrame` 열 이름을 직접 넣는 방식이라 `seaborn`과도 연결해서 이해하기 쉽습니다.
+
+기억할 것
+- `plotly.express`는 빠른 high-level 인터페이스입니다.
+- 더 세밀한 제어가 필요하면 `plotly.graph_objects`로 내려갑니다.
+
+### 4-20. `iris` 데이터셋 사용
+
+`Plotly` 예제에서는 `iris` 데이터셋을 자주 사용합니다.
+
+```python
+iris = px.data.iris()
+iris.head()
+```
+
+왜 `iris`가 좋은가
+- 열 수가 적당합니다
+- 종(`species`)이라는 범주형 열이 있습니다
+- 꽃받침, 꽃잎 길이와 너비처럼 수치형 열이 여러 개 있습니다
+
+즉,
+- `scatter`
+- `histogram`
+- `box`
+- `scatter matrix`
+
+같은 여러 그래프를 연습하기 좋습니다.
+
+주요 열
+- `sepal_length`
+- `sepal_width`
+- `petal_length`
+- `petal_width`
+- `species`
+
+### 4-21. `px.scatter()`
+
+가장 대표적인 예시는 아래입니다.
+
+```python
+fig = px.scatter(
+    iris,
+    x="sepal_width",
+    y="sepal_length",
+    color="species",
+    size="petal_length",
+    hover_data=["petal_width"]
+)
+fig.show()
+```
+
+이 코드가 의미하는 것
+- x축과 y축에 두 수치형 변수를 둡니다
+- `color="species"`로 종별 색 구분을 합니다
+- `size="petal_length"`로 추가 수치 정보를 점 크기로 표현합니다
+- `hover_data`로 마우스를 올렸을 때 볼 정보를 넣습니다
+
+왜 필요한가
+- `seaborn`의 `scatterplot()`보다 상호작용 탐색이 쉽기 때문입니다.
+
+### 4-22. `px.histogram()`과 `px.box()`
+
+분포를 interactive하게 보고 싶을 때는 아래처럼 쓸 수 있습니다.
+
+```python
+fig = px.histogram(iris, x="sepal_length", color="species", barmode="overlay")
+fig.show()
+```
+
+```python
+fig = px.box(iris, x="species", y="petal_length", color="species")
+fig.show()
+```
+
+기억할 것
+- `px.histogram()`: interactive 분포 확인
+- `px.box()`: 중앙값, 사분위수, 이상치 확인
+
+### 4-23. `px.line()`과 시간 흐름
+
+`Plotly`에서도 시간 흐름이나 순서 변화는 `line`으로 표현합니다.
+
+이번 주차의 `fmri` 데이터를 간단히 집계해서 아래처럼 볼 수 있습니다.
+
+```python
+fmri_mean = (
+    fmri.groupby(["timepoint", "event"], as_index=False)["signal"]
+    .mean()
+)
+
+fig = px.line(
+    fmri_mean,
+    x="timepoint",
+    y="signal",
+    color="event",
+    markers=True
+)
+fig.show()
+```
+
+왜 필요한가
+- `seaborn`의 `lineplot()`과 비슷한 역할을 하지만, hover와 범례 제어가 더 편하기 때문입니다.
+
+### 4-24. `seaborn`과 `Plotly`를 어떻게 구분하는가
+
+간단한 판단 기준은 아래입니다.
+
+- 빠르게 정적인 통계 그래프를 만들고 싶다: `seaborn`
+- 노트북이나 웹에서 상호작용형 그래프를 보고 싶다: `Plotly`
+- 보고서용 세밀한 제어가 중요하다: `matplotlib`
+
+즉, 세 도구는 경쟁 관계라기보다 역할 분담에 가깝습니다.
+
+### 4-25. 언제 어떤 그래프를 쓰는가
 
 아래 구분이 가장 중요합니다.
 
 - `hist()` / `histplot()`: 분포
 - `lineplot()`: 시간 흐름, 추세
 - `scatterplot()`: 두 변수 관계
+- `FacetGrid`: 같은 그래프를 그룹별 패널로 나누기
+- `relplot()`: 관계형 그래프를 패널과 함께 쉽게 그리기
+- `displot()`: 분포 그래프를 패널과 함께 쉽게 그리기
+- `catplot()`: 범주형 그래프를 패널과 함께 쉽게 그리기
+- `pairplot()`: 여러 수치형 변수 쌍을 한 번에 비교하기
+- `px.scatter()`: interactive 관계 탐색
+- `px.histogram()`: interactive 분포 탐색
+- `px.line()`: interactive 추세 탐색
 - `countplot()`: 범주형 개수 비교
 - `boxplot()`: 중앙값, 사분위수, 이상치
 
 ## 5. 실습 파일과 핵심 흐름
 
 관련 실습
-- [../../week07_Matplotlib_Seaborn.ipynb](../../week07_Matplotlib_Seaborn.ipynb)
+- [./week07_Matplotlib_Seaborn.ipynb](./week07_Matplotlib_Seaborn.ipynb)
 - [data/fmri.csv](./data/fmri.csv)
 
 추천 실습 순서
@@ -461,11 +734,18 @@ sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
 7. `fmri.csv`를 읽고 `lineplot()`으로 시간 흐름 보기
 8. `scatterplot()`으로 두 변수 사이 관계 보기
 9. `hue`, `style`, `size`를 바꾸며 표현 범위를 넓혀 보기
+10. `FacetGrid`로 그룹별 패널 나누기
+11. `relplot()`, `displot()`, `catplot()`처럼 더 편한 figure-level 함수 비교하기
+12. `pairplot()`으로 여러 변수 관계를 한 번에 보는 감각 익히기
+13. `Plotly`의 `iris` 데이터셋으로 interactive scatter와 histogram 보기
+14. `px.line()`으로 `fmri` 집계 결과를 interactive하게 보기
 
 실습 중 계속 확인할 질문
 - 지금 보고 싶은 것은 분포인가?
 - 시간 흐름인가?
 - 두 변수 관계인가?
+- 한 화면에 겹쳐 그릴지, 패널을 나누어 볼지 어느 쪽이 더 읽기 쉬운가?
+- 정적인 설명용 그래프가 필요한가, interactive 탐색용 그래프가 필요한가?
 - `matplotlib`와 `seaborn` 중 어느 쪽이 더 자연스러운가?
 
 ## 6. 자주 하는 실수
@@ -509,6 +789,37 @@ sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
 올바른 방향
 - `scatterplot`은 기본적으로 두 수치형 변수의 관계를 볼 때 가장 적합합니다.
 
+### 실수 8. `FacetGrid`를 너무 많이 나눠서 오히려 읽기 어렵게 만듦
+
+올바른 방향
+- `row`와 `col`이 많아질수록 패널이 너무 작아질 수 있습니다.
+- 정말 나눌 필요가 있는 기준만 남겨야 합니다.
+
+### 실수 9. `hue`로도 나누고 `col`로도 같은 기준을 반복해서 사용함
+
+올바른 방향
+- 색으로 구분할지, 패널로 나눌지 역할을 분리해야 합니다.
+- 같은 정보를 중복 표현하면 오히려 읽기 어렵습니다.
+
+### 실수 10. `pairplot()`에 변수를 너무 많이 넣음
+
+올바른 방향
+- 변수 수가 많아지면 패널 수가 급격히 늘어납니다.
+- 비교할 핵심 변수 몇 개만 먼저 고르는 것이 좋습니다.
+
+### 실수 11. `Plotly` 예제에서도 정적 그래프와 같은 사고만 함
+
+올바른 방향
+- `Plotly`는 hover, zoom, legend toggle 같은 상호작용이 핵심입니다.
+- 단순히 "예쁘게 그린다"가 아니라 "탐색한다"는 관점이 필요합니다.
+
+### 실수 12. `iris`에서 수치형 열과 범주형 열 역할을 구분하지 않음
+
+올바른 방향
+- `species`는 범주형 열입니다.
+- 길이와 너비 열들은 수치형 열입니다.
+- 어떤 열을 x, y, color, size에 둘지 먼저 구분해야 합니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -519,18 +830,23 @@ sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
 - `plt.hist()`와 `ax.hist()` 차이
 - `seaborn`이 무엇인가
 - `sns.histplot()`, `sns.lineplot()`, `sns.scatterplot()` 기본 문법
-- `hue`, `style`, `size`, `kde`, `stat` 의미
-- `histplot`, `lineplot`, `scatterplot` 차이
+- `FacetGrid`가 무엇이고 왜 필요한가
+- `relplot()`, `displot()`, `catplot()`, `pairplot()`의 역할
+- `Plotly`가 왜 필요한가
+- `px.scatter()`, `px.histogram()`, `px.line()` 기본 문법
+- `iris` 데이터셋을 왜 자주 쓰는가
+- `hue`, `style`, `size`, `kde`, `stat`, `row`, `col`, `hover_data` 의미
+- `histplot`, `lineplot`, `scatterplot`, `FacetGrid`, `Plotly` 차이
 
 서술형 답안 구조 예시
 
-> 히스토그램은 연속형 수치 데이터를 여러 구간으로 나누고 각 구간의 개수나 비율을 막대로 나타내는 그래프이다. `matplotlib`에서는 `plt.hist()`나 `ax.hist()`를 사용하며, `bins`는 구간 개수를 정하는 핵심 옵션이다. 이후 `seaborn`으로 확장하면 `sns.histplot()`으로 같은 분포를 더 분석 친화적으로 그릴 수 있고, 시간 흐름은 `sns.lineplot()`, 두 수치형 변수 사이 관계는 `sns.scatterplot()`으로 표현한다. 이때 `hue`, `style`, `size`를 이용하면 그룹 정보와 추가 변수도 함께 표현할 수 있다.
+> 히스토그램은 연속형 수치 데이터를 여러 구간으로 나누고 각 구간의 개수나 비율을 막대로 나타내는 그래프이다. `matplotlib`에서는 `plt.hist()`나 `ax.hist()`를 사용하며, `bins`는 구간 개수를 정하는 핵심 옵션이다. 이후 `seaborn`으로 확장하면 `sns.histplot()`으로 같은 분포를 더 분석 친화적으로 그릴 수 있고, 시간 흐름은 `sns.lineplot()`, 두 수치형 변수 사이 관계는 `sns.scatterplot()`으로 표현한다. 그룹이 많아 한 화면에 겹쳐 그리기 어려우면 `FacetGrid`로 패널을 나누어 비교할 수 있으며, `relplot()`, `displot()`, `catplot()`은 이런 다중 패널 구성을 더 쉽게 만드는 figure-level 함수이다. 상호작용형 탐색이 필요하면 `Plotly`의 `px.scatter()`, `px.histogram()`, `px.line()`을 사용하고, `iris` 같은 데이터셋으로 변수 관계와 분포를 쉽게 연습할 수 있다.
 
 ## 8. 기존 문서와 연결 포인트
 
 - 배열과 난수: [../week03/Week03_Note.md](../week03/Week03_Note.md)
 - `Pandas`, `matplotlib` 기본: [../week06/Week06_Note.md](../week06/Week06_Note.md)
-- 실습 코드: [../../week07_Matplotlib_Seaborn.ipynb](../../week07_Matplotlib_Seaborn.ipynb)
+- 실습 코드: [./week07_Matplotlib_Seaborn.ipynb](./week07_Matplotlib_Seaborn.ipynb)
 - 실습 데이터: [data/fmri.csv](./data/fmri.csv)
 
 ## 9. 빠른 요약
@@ -538,5 +854,7 @@ sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
 - 7주차는 `matplotlib` 히스토그램과 `seaborn` 기초를 한 흐름으로 누적해서 배우는 주차입니다.
 - 먼저 `sort`, `min/max`, `mean/median`, `std`, `percentile`로 데이터를 점검합니다.
 - 분포는 `hist()` / `histplot()`, 추세는 `lineplot()`, 관계는 `scatterplot()`으로 봅니다.
+- 그룹별 패널 비교가 필요하면 `FacetGrid`와 `relplot()/displot()/catplot()`까지 이어서 생각해야 합니다.
+- 상호작용 탐색이 필요하면 `Plotly`와 `iris` 예제까지 이어서 생각해야 합니다.
 - `seaborn`은 `matplotlib` 위에서 동작하며, `DataFrame` 기반 시각화에 더 편리합니다.
-- `hue`, `style`, `size`, `kde`, `stat`는 시험에서도 자주 나올 핵심 옵션입니다.
+- `hue`, `style`, `size`, `kde`, `stat`, `row`, `col`, `hover_data`는 시험에서도 자주 나올 핵심 옵션입니다.

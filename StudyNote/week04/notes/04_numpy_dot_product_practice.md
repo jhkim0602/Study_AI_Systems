@@ -3,7 +3,7 @@
 이 문서는 NumPy에서 내적을 실제로 계산하는 방법을 정리합니다.
 
 연결 실습
-- [../../../../week04_Vector_DotProduct.ipynb](../../../../week04_Vector_DotProduct.ipynb)
+- [../week04_Vector_DotProduct.ipynb](../week04_Vector_DotProduct.ipynb)
 
 ## 1. `.dot()` 사용
 

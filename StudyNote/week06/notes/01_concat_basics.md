@@ -4,7 +4,7 @@
 핵심은 "기준 열을 맞춰 합친다"가 아니라 "그냥 이어 붙인다"에 가깝습니다.
 
 연결 실습
-- [../../../../week06_Pandas_Merge_Concat.ipynb](../../../../week06_Pandas_Merge_Concat.ipynb)
+- [../week06_Pandas_Merge_Concat.ipynb](../week06_Pandas_Merge_Concat.ipynb)
 
 ## 1. 행 방향 연결
 

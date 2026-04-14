@@ -3,8 +3,8 @@
 이 문서는 내적을 어떻게 계산하는지 가장 기본적인 수준에서 설명합니다.
 
 연결 실습
-- [../../../../week04_Vector_DotProduct.ipynb](../../../../week04_Vector_DotProduct.ipynb)
-- 복습 링크: [Week03 벡터 기초](../../../week03/notes/04_vectors_and_advanced_ops.md)
+- [../week04_Vector_DotProduct.ipynb](../week04_Vector_DotProduct.ipynb)
+- 복습 링크: [Week03 벡터 기초](../../week03/notes/04_vectors_and_advanced_ops.md)
 
 ## 1. 예제: `b.dot(c)`
 
