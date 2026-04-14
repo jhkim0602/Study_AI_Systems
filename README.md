@@ -25,10 +25,6 @@
 - 실습 데이터: [StudyNote/week06/data](./StudyNote/week06/data)
 
 ## Week 07
-- 실습 코드: [week07_Matplotlib_Histogram.ipynb](./week07_Matplotlib_Histogram.ipynb)
+- 실습 코드: [week07_Matplotlib_Seaborn.ipynb](./week07_Matplotlib_Seaborn.ipynb)
 - 학습 노트: [StudyNote/week07/Week07_Note.md](./StudyNote/week07/Week07_Note.md)
-
-## Week 08
-- 실습 코드: [week08_Seaborn_Intro.ipynb](./week08_Seaborn_Intro.ipynb)
-- 학습 노트: [StudyNote/week08/Week08_Note.md](./StudyNote/week08/Week08_Note.md)
-- 실습 데이터: [StudyNote/week08/data/fmri.csv](./StudyNote/week08/data/fmri.csv)
+- 실습 데이터: [StudyNote/week07/data/fmri.csv](./StudyNote/week07/data/fmri.csv)
