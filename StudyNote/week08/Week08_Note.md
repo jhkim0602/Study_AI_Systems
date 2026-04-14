@@ -1,4 +1,4 @@
-# Week 08 Note: Seaborn 입문과 `histplot`
+# Week 08 Note: Seaborn 입문과 `histplot`, `lineplot`, `scatterplot`
 
 ## 1. 이 주제의 목적
 
@@ -8,11 +8,13 @@
 
 - `NumPy`, `Pandas`, `matplotlib`, `seaborn` 모듈 호출 구조
 - `seaborn`이 왜 필요한가
-- `fmri` 같은 내장 데이터셋을 바로 불러와 분석하는 흐름
+- `fmri` 같은 연습용 데이터셋을 불러와 분석하는 흐름
 - `sns.histplot()`이 `plt.hist()`와 어떻게 다른가
 - `sns.lineplot()`으로 시간 흐름 데이터를 읽는 방법
+- 산점도(scatterplot)가 무엇이고 어떤 관계를 보여 주는가
+- `sns.scatterplot()`으로 두 수치형 변수의 관계를 읽는 방법
 - `DataFrame`을 바로 넣어 시각화하는 흐름
-- `hue`, `kde`, `stat` 같은 통계 시각화 옵션이 왜 중요한가
+- `hue`, `style`, `size`, `kde`, `stat` 같은 통계 시각화 옵션이 왜 중요한가
 
 즉, 8주차는 "그냥 그래프를 그리는 단계"에서 한 걸음 더 나아가 "데이터 분석용 시각화"로 넘어가는 출발점입니다.
 
@@ -222,7 +224,99 @@ plt.show()
 > **참고 시각 자료: `fmri`에서 `lineplot` 읽기**
 > ![Seaborn Lineplot FMRI](./assets/week08_fmri_lineplot.svg)
 
-### 4-7. `matplotlib`와의 관계
+### 4-7. 산점도(scatterplot)란 무엇인가
+
+산점도는 두 수치형 변수의 값을 각각 x축과 y축에 놓고, 각 관측값을 점 하나로 표현하는 그래프입니다.
+
+쉽게 말하면
+- 점 1개 = 데이터 1개
+- x축 = 첫 번째 수치형 변수
+- y축 = 두 번째 수치형 변수
+
+입니다.
+
+예를 들어 학생 데이터가 있을 때
+- x축: 공부 시간
+- y축: 시험 점수
+
+로 두면, 공부 시간이 늘어날수록 점수가 올라가는 경향이 있는지 바로 볼 수 있습니다.
+
+> **참고 시각 자료: 산점도의 기본 해석**
+> ![Seaborn Scatterplot Concept](./assets/week08_scatterplot_concept.svg)
+
+산점도를 보면 무엇을 읽어야 하는가
+- 양의 관계: x가 커질수록 y도 커지는가
+- 음의 관계: x가 커질수록 y는 작아지는가
+- 군집: 점들이 몇 개의 그룹으로 모이는가
+- 이상치: 다른 점들과 멀리 떨어진 점이 있는가
+
+왜 중요한가
+- 분포는 `histplot`
+- 시간 흐름은 `lineplot`
+- 변수 사이 관계는 `scatterplot`
+
+으로 보는 도구가 다르기 때문입니다.
+
+### 4-8. `sns.scatterplot()`
+
+가장 기본적인 문법은 아래입니다.
+
+```python
+sns.scatterplot(data=df_study, x="study_hours", y="score")
+plt.show()
+```
+
+이 코드가 의미하는 것
+- `data=df_study`: 사용할 표
+- `x="study_hours"`: x축 변수
+- `y="score"`: y축 변수
+
+왜 필요한가
+- 두 수치형 변수 사이의 관계를 시각적으로 확인할 수 있기 때문입니다.
+- 상관관계가 있는지, 이상치가 있는지, 그룹 차이가 있는지 한 번에 보기 좋습니다.
+
+#### `hue`
+
+```python
+sns.scatterplot(data=df_study, x="study_hours", y="score", hue="group")
+```
+
+역할
+- 그룹별로 점 색을 다르게 합니다.
+
+왜 필요한가
+- 같은 관계라도 집단별 패턴이 다른지 볼 수 있기 때문입니다.
+
+#### `style`
+
+```python
+sns.scatterplot(data=df_study, x="study_hours", y="score", hue="group", style="passed")
+```
+
+역할
+- 점 모양을 다르게 합니다.
+
+왜 필요한가
+- 색만으로 구분하기 어려운 경우, 또 다른 범주 정보를 함께 표현할 수 있기 때문입니다.
+
+#### `size`
+
+```python
+sns.scatterplot(data=df_study, x="study_hours", y="score", size="sleep_hours")
+```
+
+역할
+- 세 번째 수치형 정보를 점 크기로 표현합니다.
+
+왜 필요한가
+- 2차원 평면에 추가 정보를 겹쳐 보여 줄 수 있기 때문입니다.
+
+기억할 것
+- `hue`: 색
+- `style`: 점 모양
+- `size`: 점 크기
+
+### 4-9. `matplotlib`와의 관계
 
 `seaborn`을 써도 `matplotlib`를 완전히 버리는 것은 아닙니다.
 
@@ -239,7 +333,7 @@ plt.show()
 
 즉, 두 라이브러리는 경쟁 관계라기보다 연결 관계에 가깝습니다.
 
-### 4-8. `seaborn`에서 이어서 배우게 될 함수들
+### 4-10. `seaborn`에서 이어서 배우게 될 함수들
 
 이번 주차는 `histplot`이 중심이지만, 이후 아래 함수들로 확장됩니다.
 
@@ -255,7 +349,7 @@ plt.show()
 - `countplot`: 범주 빈도
 - `lineplot`: 시간 흐름과 추세
 
-### 4-9. 언제 `matplotlib`, 언제 `seaborn`을 쓰는가
+### 4-11. 언제 `matplotlib`, 언제 `seaborn`을 쓰는가
 
 간단 기준
 - 세밀하게 직접 제어하고 싶으면 `matplotlib`
@@ -273,18 +367,21 @@ plt.show()
 추천 실습 순서
 1. `NumPy`, `Pandas`, `matplotlib`, `seaborn` 모듈 호출 구조 확인하기
 2. `sns.set_theme()`로 기본 스타일 설정하기
-3. `fmri = sns.load_dataset("fmri")`로 내장 데이터셋 불러오기
+3. `pd.read_csv("StudyNote/week08/data/fmri.csv")`로 `fmri` 데이터 불러오기
 4. `sns.histplot()`의 가장 기본형 실행하기
 5. `bins`, `kde=True`를 바꿔 보기
 6. `hue`로 그룹별 비교하기
 7. `stat="count"`와 `stat="density"` 차이 보기
 8. `sns.lineplot()`으로 시간 흐름 읽기
-9. `ax=`를 넣어 `matplotlib`와 함께 쓰기
-10. `scatterplot`, `boxplot`, `countplot`을 미리 맛보기로 보기
+9. `sns.scatterplot()`으로 변수 관계 읽기
+10. `hue`, `style`, `size`를 바꿔 보기
+11. `ax=`를 넣어 `matplotlib`와 함께 쓰기
+12. `boxplot`, `countplot`을 미리 맛보기로 보기
 
 실습 중 계속 확인할 질문
 - 지금 보고 싶은 것은 분포인가, 관계인가, 범주 개수인가?
 - 지금 보고 싶은 것이 분포인지, 시간에 따른 변화인지 먼저 구분했는가?
+- 지금 보고 싶은 것이 "관계"라면 `scatterplot`이 맞는가?
 - 단순 `matplotlib`보다 `seaborn`이 더 읽기 쉬운 이유는 무엇인가?
 - `hue`와 `kde`가 그래프 해석을 어떻게 바꾸는가?
 
@@ -324,6 +421,18 @@ plt.show()
 - `lineplot`은 순서나 시간 흐름이 있는 데이터에 적합합니다.
 - 단순 범주 비교라면 `barplot`이나 `countplot`이 더 맞을 수 있습니다.
 
+### 실수 7. 산점도에서 x축이나 y축에 범주형 열을 무리하게 넣음
+
+올바른 방향
+- `scatterplot`은 기본적으로 두 수치형 변수의 관계를 볼 때 가장 적합합니다.
+- 범주 비교가 목적이면 `countplot`, `boxplot`, `barplot`이 더 맞을 수 있습니다.
+
+### 실수 8. 점 하나가 무엇을 뜻하는지 생각하지 않음
+
+올바른 방향
+- 산점도에서 점 1개는 관측값 1개입니다.
+- 점 하나하나가 어떤 행(row)을 의미하는지 생각해야 해석이 정확해집니다.
+
 ## 7. 시험 대비 포인트
 
 시험 직전에는 아래를 설명할 수 있어야 합니다.
@@ -334,13 +443,16 @@ plt.show()
 - `matplotlib`와 어떤 관계인가
 - `sns.histplot()` 기본 문법
 - `sns.lineplot()` 기본 문법
-- `bins`, `kde`, `hue`, `stat` 의미
+- 산점도(scatterplot)가 무엇인가
+- `sns.scatterplot()` 기본 문법
+- `bins`, `kde`, `hue`, `style`, `size`, `stat` 의미
 - `histplot`과 `plt.hist()` 차이
+- `lineplot`과 `scatterplot` 차이
 - 왜 `DataFrame` 기반 시각화에서 `seaborn`이 편한가
 
 서술형 답안 구조 예시
 
-> `seaborn`은 `matplotlib` 기반의 통계 시각화 라이브러리이다. 보통 `NumPy`, `Pandas`, `matplotlib`와 함께 사용하며, 기본 스타일이 보기 좋고 `DataFrame`과 잘 연결된다. 히스토그램은 `sns.histplot()`으로 그리고, 시간 흐름 데이터는 `sns.lineplot()`으로 표현할 수 있다. 예를 들어 `fmri` 데이터셋에서는 `timepoint`에 따른 `signal` 변화를 `lineplot`으로 읽고, `hue`와 `style`을 통해 조건별 차이도 함께 비교할 수 있다.
+> `seaborn`은 `matplotlib` 기반의 통계 시각화 라이브러리이다. 보통 `NumPy`, `Pandas`, `matplotlib`와 함께 사용하며, 기본 스타일이 보기 좋고 `DataFrame`과 잘 연결된다. 히스토그램은 `sns.histplot()`으로 그리고, 시간 흐름 데이터는 `sns.lineplot()`으로 표현할 수 있다. 두 수치형 변수의 관계를 볼 때는 `sns.scatterplot()`을 사용하며, 점 하나는 관측값 하나를 뜻한다. 또한 `hue`, `style`, `size`를 이용하면 집단, 상태, 추가 수치 정보를 함께 표현할 수 있다.
 
 ## 8. 기존 문서와 연결 포인트
 
@@ -353,8 +465,9 @@ plt.show()
 
 - `seaborn`은 `matplotlib` 위에서 동작하는 통계 시각화 라이브러리입니다.
 - 보통 `NumPy`, `Pandas`, `matplotlib`, `seaborn`을 함께 호출합니다.
-- `fmri` 같은 내장 데이터셋으로 바로 실습할 수 있습니다.
-- 8주차의 시작 함수는 `sns.histplot()`과 `sns.lineplot()`입니다.
-- `bins`, `kde`, `hue`, `stat`가 핵심 옵션입니다.
+- `fmri` 같은 연습용 데이터셋으로 바로 실습할 수 있습니다.
+- 8주차의 시작 함수는 `sns.histplot()`, `sns.lineplot()`, `sns.scatterplot()`입니다.
+- 산점도는 두 수치형 변수의 관계를 읽는 그래프입니다.
+- `bins`, `kde`, `hue`, `style`, `size`, `stat`가 핵심 옵션입니다.
 - `DataFrame`을 직접 넣는 흐름이 자연스럽다는 점이 큰 장점입니다.
 - `matplotlib`와 끊어지지 않고 함께 사용된다는 점을 기억해야 합니다.
